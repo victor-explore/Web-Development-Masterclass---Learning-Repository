@@ -3,7 +3,7 @@
 ![Web Development Banner](https://img.shields.io/badge/Web-Development-blue)
 ![Course Completion](https://img.shields.io/badge/Status-Completed-success)
 
-This repository contains all the practice code, projects, and notes developed while following the Udemy course "Web Development Masterclass" by Colt Steele ([Course Link](https://www.udemy.com/course/web-dev-master/?couponCode=KEEPLEARNING)). I've completed the course and organized this repository to serve as both a reference and a showcase of my learning journey.
+This repository contains all the practice code, projects, and notes developed while following the Udemy course "Web Development Masterclass" by Hitesh Choudhary ([Course Link](https://www.udemy.com/course/web-dev-master/?couponCode=KEEPLEARNING)). I've completed the course and organized this repository to serve as both a reference and a showcase of my learning journey.
 
 ## 📋 Table of Contents
 
