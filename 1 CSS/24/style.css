@@ -1,0 +1,97 @@
+body,
+body {
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  font-family: "Courier New", Courier, monospace;
+  height: auto;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, #000000, #ffffff);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.content img {
+  width: 100%;
+}
+
+.logo {
+  width: 100px;
+  height: 300px;
+  border-radius: 1%;
+  border: 2px solid #000000;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #000000;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+input:focus {
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #a32424;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}

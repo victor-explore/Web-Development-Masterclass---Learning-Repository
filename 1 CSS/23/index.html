@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 20px;
+        padding: 20px;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f0f0f0;
+      }
+      .nav-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+      h2 {
+        margin-bottom: 10px;
+      }
+      .nav1 {
+        background-color: #b33c3c;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .nav1 ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+      }
+      .nav1 li {
+        padding: 10px;
+        border-radius: 5px;
+        display: inline;
+      }
+      .nav1 a {
+        text-decoration: none;
+        color: #00ffff;
+        font-size: 1.2rem;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .nav1 a::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #00ffff;
+      }
+      .nav2 {
+        background-color: #00ffff;
+        width: 200px;
+        padding: 10px;
+      }
+      .nav2 ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      .nav2 li {
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .nav2 a {
+        text-decoration: none;
+        color: #fff;
+        display: block;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .nav2 a:hover {
+        background-color: #fff;
+        color: #000;
+      }
+      .nav2 button {
+        background-color: #aa2525;
+        color: #000;
+        padding: 10px;
+        border-radius: 5px;
+        width: 100%;
+        cursor: pointer;
+      }
+      .nav3 {
+        background-color: #00ffff; /* Set the background color to cyan */
+        padding: 10px; /* Add padding around the navigation container */
+        border-radius: 5px; /* Add rounded corners to the navigation */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+      }
+      .nav3 ul {
+        list-style-type: none; /* Remove default list bullets */
+        padding: 0; /* Remove default padding */
+        margin: 0; /* Remove default margins */
+        display: flex; /* Make list items horizontal */
+        justify-content: space-around; /* Space items evenly */
+      }
+      .nav3 li {
+        padding: 10px; /* Add padding around list items */
+        position: relative; /* For positioning dropdown content */
+        transition: background-color 0.3s; /* Smooth transition for hover effects */
+      }
+      .nav3 li:hover {
+        background-color: #00e6e6; /* Slightly darker cyan on hover */
+      }
+      .nav3 a {
+        text-decoration: none; /* Remove underline from links */
+        color: #000; /* Black text color */
+        display: block; /* Make link fill the container */
+        padding: 10px; /* Add padding around links */
+        border-radius: 5px; /* Rounded corners for links */
+        transition: all 0.3s ease; /* Smooth transition for all changes */
+      }
+      .nav3 a:hover {
+        color: #fff; /* White text on hover */
+      }
+      .dropdown-content {
+        display: none; /* Hide dropdown by default */
+        position: absolute; /* Position relative to parent */
+        top: 100%; /* Position below parent */
+        left: 0; /* Align with parent left */
+        background-color: #f9f9f9; /* Light background for dropdown */
+        min-width: 160px; /* Minimum width of dropdown */
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        border-radius: 5px; /* Rounded corners for dropdown */
+        z-index: 1; /* Ensure dropdown appears above other content */
+      }
+      .dropdown:hover .dropdown-content {
+        display: block; /* Show dropdown on hover */
+      }
+      .dropdown-content a {
+        padding: 12px 16px; /* Padding for dropdown items */
+        color: #000; /* Black text color */
+        border-radius: 0; /* Remove border radius from dropdown items */
+      }
+      .dropdown-content a:hover {
+        background-color: #00ffff; /* Cyan background on hover */
+        color: #fff; /* White text on hover */
+        transition: all 0.3s ease; /* Smooth transition for all changes */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="nav-container">
+      <h2>Variation 1: Horizontal with underline effect</h2>
+      <nav class="nav1">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="nav-container">
+      <h2>Variation 2: Vertical with hover effect</h2>
+      <nav class="nav2">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <button>Login</button>
+      </nav>
+    </div>
+
+    <div class="nav-container">
+      <h2>Variation 3: Vertical with underline effect</h2>
+      <nav class="nav3">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li class="dropdown"><a href="#">About</a></li>
+          <div class="dropdown-content">
+            <a href="#">Mission</a>
+            <a href="#">Vision</a>
+            <a href="#">Team</a>
+          </div>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </body>
+</html>

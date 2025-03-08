@@ -1,0 +1,85 @@
+<html>
+  <body>
+    <h1>This is h1 heading</h1>
+    <p>
+      This is a paragraph. For more information, visit
+      <a href="https://www.google.com" target="_blank">Google</a>.
+    </p>
+    <p>
+      This is a paragraph. For more information, visit
+      <a
+        href="https://www.google.com"
+        target="_blank"
+        title="Click to visit Google"
+        >Google</a
+      >.
+      <!-- The title attribute provides a tooltip that appears when the user hovers over the link, giving additional context about the link's destination. -->
+    </p>
+    <p>
+      Hover over this text to see the tooltip
+      <span
+        title="This is a tooltip that appears on hover"
+        style="border-bottom: 1px dotted; cursor: help"
+        >(?)</span
+      >
+      <!-- The span element is used here to create a tooltip effect. The title attribute provides the tooltip text that appears when the user hovers over the span. The style attribute adds a dotted underline and changes the cursor to indicate that the text is interactive. -->
+    </p>
+    <button
+      type="button"
+      onclick="alert('Button clicked!')"
+      style="
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      "
+    >
+      Click Me
+    </button>
+    <form action="/submit" method="post">
+      <!-- Start of the form element, action specifies where to send the form data, method specifies the HTTP method to use -->
+      <label for="dropdown">Choose an option:</label>
+      <!-- Label for the dropdown, associated with the dropdown by the 'for' attribute -->
+      <select id="dropdown" name="options">
+        <!-- Dropdown selection element, 'id' is used for the label association, 'name' is used to identify the data when submitted -->
+        <option value="option1">Option 1</option>
+        <!-- First option in the dropdown, 'value' is what will be sent when this option is selected -->
+        <option value="option2">Option 2</option>
+        <!-- Second option in the dropdown -->
+        <option value="option3">Option 3</option>
+        <!-- Third option in the dropdown -->
+      </select>
+      <!-- End of the select element -->
+      <input
+        type="submit"
+        value="Submit"
+        style="
+          margin-top: 10px;
+          padding: 10px 20px;
+          background-color: #4caf50;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        "
+      />
+      <!-- Submit button for the form, styled similarly to the previous button -->
+    </form>
+    <div
+      style="
+        width: 100%;
+        background-color: #f3f3f3;
+        border-radius: 5px;
+        overflow: hidden;
+      "
+    >
+      <!-- Container for the progress bar, set to 100% width, with a light gray background and rounded corners -->
+      <div style="width: 50%; height: 30px; background-color: #4caf50"></div>
+      <!-- Inner div representing the progress, set to 50% width, with a height of 30px and a green background -->
+    </div>
+    <!-- The progress bar is statically set to 50% width to represent progress without any dynamic functionality -->
+    <!-- End of the form element -->
+  </body>
+</html>

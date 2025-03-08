@@ -1,0 +1,5 @@
+@tailwind base; /* Includes Tailwind's base styles */
+@tailwind components; /* Includes Tailwind's component classes */
+@tailwind utilities; /* Includes Tailwind's utility classes */
+
+/* Custom styles can be added below */

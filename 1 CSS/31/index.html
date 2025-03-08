@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Defines the character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Makes the webpage responsive on different devices -->
+    <title>Bootstrap Video Gallery</title>
+    <!-- Title for the webpage -->
+    <!-- Bootstrap CSS CDN link -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Imports Bootstrap CSS -->
+    <!-- Font Awesome for video icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Imports Font Awesome icons for better visual elements -->
+    <style>
+      body {
+        background-color: #121212; /* Dark background color for the page */
+        color: white; /* White text color for better readability on dark background */
+        font-family: "Segoe UI", Arial, sans-serif; /* Modern, readable font stack */
+      }
+
+      .header-subtitle {
+        color: #aaa; /* Lighter color for subtitle for visual hierarchy */
+        margin-bottom: 20px; /* Adds space below the subtitle */
+      }
+
+      .card {
+        background-color: #1e1e1e; /* Darker card background */
+        border: 1px solid #333; /* Subtle border for cards */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+      }
+
+      .card:hover {
+        transform: translateY(-5px); /* Slight lift effect on hover */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+      }
+
+      .card-img-top {
+        height: 180px; /* Consistent height for card images */
+        object-fit: cover; /* Ensures images cover the area without distortion */
+        background-color: #333; /* Background color for image placeholders */
+      }
+
+      .video-duration {
+        position: absolute; /* Positions the duration badge */
+        bottom: 10px; /* Distance from bottom */
+        right: 10px; /* Distance from right */
+        background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+        padding: 3px 8px; /* Padding inside the badge */
+        border-radius: 4px; /* Rounded corners */
+        font-size: 12px; /* Smaller font size */
+      }
+
+      .watch-btn {
+        background-color: #1e1e1e; /* Dark button background */
+        color: white; /* White text for contrast */
+        border: 1px solid #6c757d; /* Subtle border for the button */
+        transition: all 0.3s ease; /* Smooth transition for hover effect */
+      }
+
+      .watch-btn:hover {
+        background-color: #6c757d; /* Lighter background on hover */
+        color: white; /* Maintain white text on hover */
+        border-color: #6c757d; /* Maintain border color on hover */
+      }
+
+      .carousel-container {
+        position: relative; /* For positioning carousel controls */
+        overflow: hidden; /* Hides overflow content */
+        border-radius: 0.25rem; /* Matches Bootstrap's border-radius */
+      }
+
+      .carousel-inner img {
+        height: 400px; /* Fixed height for carousel images */
+        object-fit: cover; /* Ensures images cover the area without distortion */
+      }
+
+      .carousel-caption {
+        background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+        border-radius: 4px; /* Rounded corners */
+        padding: 15px; /* Padding inside the caption */
+      }
+
+      .footer {
+        margin-top: 50px; /* Space above footer */
+        padding: 20px 0; /* Padding inside footer */
+        border-top: 1px solid #333; /* Top border for footer */
+      }
+    </style>
+    <!-- Enhanced custom CSS for a more professional dark theme -->
+  </head>
+  <body>
+    <div class="container py-5">
+      <!-- Main container with padding -->
+
+      <!-- Header section -->
+      <header class="text-center mb-5">
+        <!-- Centered header with bottom margin -->
+        <h1 class="display-4">Bootstrap Video Gallery</h1>
+        <!-- Large, prominent title -->
+        <p class="header-subtitle">
+          Discover the best Bootstrap tutorial videos
+        </p>
+        <!-- Descriptive subtitle -->
+      </header>
+
+      <!-- Carousel section -->
+      <div class="row mb-5">
+        <!-- Row with bottom margin -->
+        <div class="col-12">
+          <!-- Full width column -->
+          <div class="card">
+            <!-- Card component for the carousel -->
+            <div class="card-body p-0">
+              <!-- Card body without padding for full-width carousel -->
+              <div class="carousel-container">
+                <!-- Container for the carousel -->
+                <div
+                  id="videoCarousel"
+                  class="carousel slide"
+                  data-bs-ride="carousel"
+                >
+                  <!-- Bootstrap carousel component with auto-play -->
+                  <div class="carousel-indicators">
+                    <!-- Carousel indicators/dots -->
+                    <button
+                      type="button"
+                      data-bs-target="#videoCarousel"
+                      data-bs-slide-to="0"
+                      class="active"
+                    ></button>
+                    <!-- Indicator for first slide -->
+                    <button
+                      type="button"
+                      data-bs-target="#videoCarousel"
+                      data-bs-slide-to="1"
+                    ></button>
+                    <!-- Indicator for second slide -->
+                    <button
+                      type="button"
+                      data-bs-target="#videoCarousel"
+                      data-bs-slide-to="2"
+                    ></button>
+                    <!-- Indicator for third slide -->
+                  </div>
+                  <div class="carousel-inner">
+                    <!-- Container for carousel slides -->
+                    <div class="carousel-item active">
+                      <!-- First carousel slide (active by default) -->
+                      <img
+                        src="https://via.placeholder.com/1200x400/333/666?text=Bootstrap+Basics"
+                        class="d-block w-100"
+                        alt="Bootstrap Basics"
+                      />
+                      <!-- Placeholder image for first slide -->
+                      <div class="carousel-caption d-none d-md-block">
+                        <!-- Caption visible on medium screens and up -->
+                        <h3>Bootstrap Basics</h3>
+                        <!-- Slide title -->
+                        <p>Learn the fundamentals of Bootstrap framework</p>
+                        <!-- Slide description -->
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <!-- Second carousel slide -->
+                      <img
+                        src="https://via.placeholder.com/1200x400/333/666?text=Responsive+Design"
+                        class="d-block w-100"
+                        alt="Responsive Design"
+                      />
+                      <!-- Placeholder image for second slide -->
+                      <div class="carousel-caption d-none d-md-block">
+                        <!-- Caption visible on medium screens and up -->
+                        <h3>Responsive Design</h3>
+                        <!-- Slide title -->
+                        <p>Create websites that look great on any device</p>
+                        <!-- Slide description -->
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <!-- Third carousel slide -->
+                      <img
+                        src="https://via.placeholder.com/1200x400/333/666?text=Advanced+Components"
+                        class="d-block w-100"
+                        alt="Advanced Components"
+                      />
+                      <!-- Placeholder image for third slide -->
+                      <div class="carousel-caption d-none d-md-block">
+                        <!-- Caption visible on medium screens and up -->
+                        <h3>Advanced Components</h3>
+                        <!-- Slide title -->
+                        <p>Master Bootstrap's powerful components</p>
+                        <!-- Slide description -->
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#videoCarousel"
+                    data-bs-slide="prev"
+                  >
+                    <!-- Previous slide control -->
+                    <span
+                      class="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <!-- Previous icon -->
+                    <span class="visually-hidden">Previous</span>
+                    <!-- Screen reader text -->
+                  </button>
+                  <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#videoCarousel"
+                    data-bs-slide="next"
+                  >
+                    <!-- Next slide control -->
+                    <span
+                      class="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <!-- Next icon -->
+                    <span class="visually-hidden">Next</span>
+                    <!-- Screen reader text -->
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video cards section -->
+      <h2 class="text-center mb-4">Featured Videos</h2>
+      <!-- Section title -->
+      <div class="row">
+        <!-- Row for the video cards -->
+
+        <!-- First video card -->
+        <div class="col-md-4 mb-4">
+          <!-- Column that takes 4/12 of the width on medium screens and larger -->
+          <div class="card h-100">
+            <!-- Card with 100% height -->
+            <div class="position-relative">
+              <!-- Relative positioning for absolute elements inside -->
+              <img
+                src="https://via.placeholder.com/400x225/333/666?text=Bootstrap+Grid+System"
+                class="card-img-top"
+                alt="Bootstrap Grid System"
+              />
+              <!-- Placeholder image for video thumbnail -->
+              <span class="video-duration">12:34</span>
+              <!-- Video duration badge -->
+            </div>
+            <div class="card-body text-center">
+              <!-- Card body with centered content -->
+              <h5 class="card-title">Bootstrap Grid System</h5>
+              <!-- Card title -->
+              <p class="card-text">
+                Learn how to create responsive layouts using Bootstrap's
+                powerful grid system.
+              </p>
+              <!-- Card text with more descriptive content -->
+            </div>
+            <div class="card-footer text-center border-top-0">
+              <!-- Card footer without top border -->
+              <a href="#" class="btn watch-btn"
+                ><i class="fas fa-play me-2"></i>Watch Now</a
+              >
+              <!-- Button with play icon and better text capitalization -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Second video card -->
+        <div class="col-md-4 mb-4">
+          <!-- Column that takes 4/12 of the width on medium screens and larger -->
+          <div class="card h-100">
+            <!-- Card with 100% height -->
+            <div class="position-relative">
+              <!-- Relative positioning for absolute elements inside -->
+              <img
+                src="https://via.placeholder.com/400x225/333/666?text=Bootstrap+Components"
+                class="card-img-top"
+                alt="Bootstrap Components"
+              />
+              <!-- Placeholder image for video thumbnail -->
+              <span class="video-duration">15:47</span>
+              <!-- Video duration badge -->
+            </div>
+            <div class="card-body text-center">
+              <!-- Card body with centered content -->
+              <h5 class="card-title">Bootstrap Components</h5>
+              <!-- Card title -->
+              <p class="card-text">
+                Explore the most useful Bootstrap components for building modern
+                websites.
+              </p>
+              <!-- Card text with more descriptive content -->
+            </div>
+            <div class="card-footer text-center border-top-0">
+              <!-- Card footer without top border -->
+              <a href="#" class="btn watch-btn"
+                ><i class="fas fa-play me-2"></i>Watch Now</a
+              >
+              <!-- Button with play icon and better text capitalization -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Third video card -->
+        <div class="col-md-4 mb-4">
+          <!-- Column that takes 4/12 of the width on medium screens and larger -->
+          <div class="card h-100">
+            <!-- Card with 100% height -->
+            <div class="position-relative">
+              <!-- Relative positioning for absolute elements inside -->
+              <img
+                src="https://via.placeholder.com/400x225/333/666?text=Bootstrap+Utilities"
+                class="card-img-top"
+                alt="Bootstrap Utilities"
+              />
+              <!-- Placeholder image for video thumbnail -->
+              <span class="video-duration">10:21</span>
+              <!-- Video duration badge -->
+            </div>
+            <div class="card-body text-center">
+              <!-- Card body with centered content -->
+              <h5 class="card-title">Bootstrap Utilities</h5>
+              <!-- Card title -->
+              <p class="card-text">
+                Master Bootstrap's utility classes to quickly style elements
+                without custom CSS.
+              </p>
+              <!-- Card text with more descriptive content -->
+            </div>
+            <div class="card-footer text-center border-top-0">
+              <!-- Card footer without top border -->
+              <a href="#" class="btn watch-btn"
+                ><i class="fas fa-play me-2"></i>Watch Now</a
+              >
+              <!-- Button with play icon and better text capitalization -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer section -->
+      <footer class="footer text-center">
+        <!-- Centered footer with top margin -->
+        <p class="mb-0">© 2023 Bootstrap Video Gallery. All rights reserved.</p>
+        <!-- Copyright text -->
+      </footer>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Imports Bootstrap JavaScript for interactive components like carousel -->
+  </body>
+</html>

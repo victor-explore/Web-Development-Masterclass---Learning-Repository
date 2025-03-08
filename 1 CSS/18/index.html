@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Styling for the body element of the HTML page */
+      body {
+        background-color: rgb(
+          144,
+          238,
+          144
+        ); /* Change the background color to a shade of green (light green) */
+        font-family: Arial, Helvetica, sans-serif; /* Set the font family for the entire body */
+        margin: 0; /* Remove default margin */
+        padding: 0; /* Remove default padding */
+        display: flex; /* Use flexbox for layout */
+        justify-content: center; /* Center content horizontally */
+        align-items: center; /* Center content vertically */
+        height: 100vh; /* Set the height of the body to 100% of the viewport height */
+      }
+      /* Styling for elements with the class 'card' */
+      .card {
+        background-color: white; /* Set the background color of the card to white */
+        padding: 20px; /* Add padding inside the card */
+        border-radius: 10px; /* Round the corners of the card */
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); /* Add a shadow effect to the card for depth */
+      }
+      /* Styling for h2 elements within the card */
+      h2 {
+        margin-top: 0; /* Remove the default top margin of the h2 element */
+      }
+      /* Styling for the form element */
+      form {
+        display: flex; /* Use flexbox for layout */
+        flex-direction: column; /* Stack form elements vertically */
+      }
+      /* Styling for input elements within the form */
+      input {
+        padding: 10px; /* Add padding inside the input fields */
+        border-radius: 5px; /* Round the corners of the input fields */
+        border: 1px solid #ccc; /* Add a light gray border to the input fields */
+        margin-bottom: 10px; /* Add bottom margin to separate input fields */
+      }
+      /* Styling for button elements within the form */
+      button {
+        padding: 10px; /* Add padding inside the button */
+        border-radius: 5px; /* Round the corners of the button */
+        border: none; /* Remove the default button border */
+        background-color: #4caf50; /* Set the background color of the button to green */
+        color: white; /* Set the text color of the button to white */
+      }
+      /* Styling for button elements on hover */
+      button:hover {
+        background-color: #367c39; /* Darken the background color of the button on hover */
+      }
+    </style>
+    <!-- Link to the external CSS file named 'styles.css', which will apply styles to the HTML document. The 'rel' attribute specifies the relationship between the current document and the linked resource, and 'href' specifies the path to the CSS file. -->
+  </head>
+
+  <body>
+    <div class="card">
+      <h2>This is a subheading</h2>
+      <form>
+        <label for="email">Email</label>
+        <!-- Label for the email input field, associated with the input by the 'for' attribute -->
+        <input type="email" id="email" name="email" />
+        <!-- Input field for the user's email, type is set to 'email' for validation -->
+
+        <label for="first-name">First Name</label>
+        <!-- Label for the first name input field -->
+        <input type="text" id="first-name" name="first-name" />
+        <!-- Input field for the user's first name, type is set to 'text' -->
+
+        <label for="last-name">Last Name</label>
+        <!-- Label for the last name input field -->
+        <input type="text" id="last-name" name="last-name" />
+        <!-- Input field for the user's last name, type is set to 'text' -->
+
+        <label for="password">Password</label>
+        <!-- Label for the password input field, associated with the input by the 'for' attribute -->
+        <input type="password" id="password" name="password" />
+        <!-- Input field for the user's password, type is set to 'password' for security -->
+
+        <button type="submit">Sign Up</button>
+        <!-- Button to submit the form, text changed to 'Sign Up' to reflect the action -->
+      </form>
+    </div>
+  </body>
+</html>

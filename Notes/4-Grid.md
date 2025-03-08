@@ -1,0 +1,3 @@
+- We have already seen the flexbox layout model is able to place items anywhere you want.
+- Prefer to use flexbox for one dimensional layout like navigation bar, footer, etc. For the rest of the cases, ie two dimensional layout, we can use grid layout.
+- Visualize webpage as rows

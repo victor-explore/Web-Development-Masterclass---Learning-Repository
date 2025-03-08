@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Defines the character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Makes the webpage responsive on different devices -->
+    <title>CSS Grid Interactive Playground</title>
+    <!-- Title for the webpage -->
+    <style>
+      /* Global styles */
+      body {
+        font-family: "Segoe UI", Arial, sans-serif; /* Modern, readable font stack */
+        background-color: #f8f9fa; /* Light background for better contrast */
+        margin: 0; /* Removes default margin */
+        padding: 20px; /* Adds space around the content */
+        color: #333; /* Default text color for readability */
+        line-height: 1.6; /* Improves text readability with better line spacing */
+        max-width: 1200px; /* Limits maximum width for better readability */
+        margin: 0 auto; /* Centers the content horizontally */
+      }
+
+      /* Page header styling */
+      .page-header {
+        text-align: center; /* Centers the header text */
+        margin-bottom: 30px; /* Space below the header */
+        color: #2c3e50; /* Dark blue color for the header */
+        padding: 20px 0; /* Additional padding for spacing */
+        border-bottom: 3px solid #e9ecef; /* Subtle border for visual separation */
+      }
+
+      .page-header h1 {
+        margin-bottom: 10px; /* Reduces space between title and subtitle */
+        font-size: 2.5rem; /* Larger font size for impact */
+      }
+
+      .page-header p {
+        font-size: 1.2rem; /* Larger subtitle for readability */
+        color: #6c757d; /* Muted color for subtitle */
+        max-width: 600px; /* Limits width for readability */
+        margin: 0 auto; /* Centers the subtitle */
+      }
+
+      /* Container for each grid example */
+      .container {
+        margin-bottom: 40px; /* Space between examples */
+        padding: 25px; /* Padding for content spacing */
+        background-color: white; /* White background */
+        border-radius: 12px; /* Rounded corners */
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+        transition: all 0.3s ease; /* Smooth transition for hover effect */
+      }
+
+      /* Container hover effect */
+      .container:hover {
+        transform: translateY(-5px); /* Slight lift effect on hover */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+      }
+
+      /* Title styling */
+      h2 {
+        color: #2c3e50; /* Dark blue color for contrast */
+        border-bottom: 2px solid #e9ecef; /* Light border for separation */
+        padding-bottom: 10px; /* Space between text and border */
+        margin-top: 0; /* Removes default top margin */
+        font-weight: 600; /* Semi-bold for readability */
+        font-size: 1.8rem; /* Larger font size for hierarchy */
+      }
+
+      /* Description text */
+      .description {
+        margin-bottom: 20px; /* Space below description */
+        color: #495057; /* Darker color for readability */
+        font-size: 1rem; /* Standard font size */
+        line-height: 1.7; /* Improved line height */
+        max-width: 800px; /* Limits width for readability */
+      }
+
+      /* Grid container */
+      .grid-container {
+        display: grid; /* Enables grid layout */
+        grid-template-columns: repeat(3, 1fr); /* Default 3 equal columns */
+        grid-gap: 20px; /* Space between grid items */
+        background-color: #f8f9fa; /* Light background to distinguish the grid area */
+        border: 2px dashed #ced4da; /* Dashed border for better visibility */
+        border-radius: 10px; /* Rounded corners for the grid container */
+        padding: 20px; /* Padding inside the grid container */
+        margin-bottom: 20px; /* Space below the container */
+        min-height: 300px; /* Minimum height for better visibility */
+        transition: all 0.3s ease; /* Smooth transition for property changes */
+        position: relative; /* For positioning grid lines indicators */
+      }
+
+      /* Grid lines indicators */
+      .grid-container::before {
+        content: ""; /* Empty content for the pseudo-element */
+        position: absolute; /* Absolute positioning within the grid container */
+        top: 0; /* Align to the top */
+        left: 0; /* Align to the left */
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        background-image: linear-gradient(
+            to right,
+            transparent 98%,
+            rgba(108, 117, 125, 0.2) 2%
+          ),
+          linear-gradient(
+            to bottom,
+            transparent 98%,
+            rgba(108, 117, 125, 0.2) 2%
+          ); /* Creates grid lines */
+        background-size: calc(100% / 3) 100%, 100% calc(100% / 3); /* Sizes the grid lines */
+        pointer-events: none; /* Prevents the grid lines from interfering with interactions */
+        z-index: 1; /* Places the grid lines above the background but below the items */
+        border-radius: 8px; /* Matches the container's border radius */
+      }
+
+      /* Grid items */
+      .grid-item {
+        background-color: #6c757d; /* Default background color */
+        color: white; /* White text for contrast */
+        padding: 20px; /* Padding inside grid items */
+        border-radius: 8px; /* Rounded corners for grid items */
+        display: flex; /* Enables flexbox for centering content */
+        justify-content: center; /* Centers content horizontally */
+        align-items: center; /* Centers content vertically */
+        font-weight: bold; /* Bold text */
+        font-size: 1.2rem; /* Larger font size */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+        transition: all 0.3s ease; /* Smooth transition for hover effects */
+        position: relative; /* For positioning the item number */
+        z-index: 2; /* Ensures items appear above the grid lines */
+      }
+
+      /* Grid item color variations */
+      .grid-item:nth-child(3n + 1) {
+        background-color: #3498db;
+      } /* Blue for first column */
+      .grid-item:nth-child(3n + 2) {
+        background-color: #2ecc71;
+      } /* Green for second column */
+      .grid-item:nth-child(3n + 3) {
+        background-color: #e74c3c;
+      } /* Red for third column */
+
+      /* Grid item hover effect */
+      .grid-item:hover {
+        transform: scale(1.05); /* Slightly enlarges the item on hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+        cursor: pointer; /* Changes cursor to pointer on hover */
+        z-index: 3; /* Brings the hovered item to the front */
+      }
+
+      /* Code styling */
+      code {
+        background-color: #f1f3f5; /* Light background for code */
+        padding: 2px 5px; /* Padding around code */
+        border-radius: 4px; /* Rounded corners for code */
+        font-family: Consolas, Monaco, "Andale Mono", monospace; /* Monospace font for code */
+        color: #e83e8c; /* Pink color for code text */
+        font-size: 0.9em; /* Slightly smaller font size */
+      }
+
+      /* Dark mode support */
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #212529; /* Dark background */
+          color: #f8f9fa; /* Light text color */
+        }
+
+        .container {
+          background-color: #343a40; /* Darker container background */
+          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Darker shadow */
+        }
+
+        .grid-container {
+          background-color: #2b3035; /* Darker grid container background */
+          border-color: #495057; /* Darker border */
+        }
+
+        .description {
+          color: #ced4da; /* Lighter description text */
+        }
+
+        h2 {
+          color: #e9ecef; /* Lighter heading color */
+          border-bottom-color: #495057; /* Darker border */
+        }
+
+        code {
+          background-color: #343a40; /* Darker code background */
+          color: #f783ac; /* Lighter pink for code in dark mode */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main header section -->
+    <div class="page-header">
+      <h1>CSS Grid Interactive Playground</h1>
+      <!-- Main title -->
+      <p>
+        Experiment with CSS Grid properties and see the changes in real-time.
+      </p>
+      <!-- Subtitle describing the purpose -->
+    </div>
+
+    <!-- First grid example: Basic Grid -->
+    <div class="container">
+      <h2>Basic Grid</h2>
+      <!-- Title for the example -->
+      <p class="description">
+        A simple 3x3 grid layout. The
+        <code>grid-template-columns</code> property is set to
+        <code>repeat(3, 1fr)</code>, creating three equal-width columns. The
+        <code>grid-gap</code> property adds space between the grid items.
+      </p>
+      <!-- Description of the example -->
+      <div id="basic-grid" class="grid-container">
+        <!-- Start of the grid container -->
+        <div class="grid-item">1</div>
+        <!-- Grid item 1 -->
+        <div class="grid-item">2</div>
+        <!-- Grid item 2 -->
+        <div class="grid-item">3</div>
+        <!-- Grid item 3 -->
+        <div class="grid-item">4</div>
+        <!-- Grid item 4 -->
+        <div class="grid-item">5</div>
+        <!-- Grid item 5 -->
+        <div class="grid-item">6</div>
+        <!-- Grid item 6 -->
+        <div class="grid-item">7</div>
+        <!-- Grid item 7 -->
+        <div class="grid-item">8</div>
+        <!-- Grid item 8 -->
+        <div class="grid-item">9</div>
+        <!-- Grid item 9 -->
+      </div>
+      <!-- End of the grid container -->
+      <div class="controls">
+        <!-- Controls section for interactive adjustments -->
+        <p>
+          <strong>Try it yourself:</strong> Adjust the grid properties below to
+          see how they affect the layout.
+        </p>
+        <!-- Instructions for the controls -->
+
+        <div class="control-group">
+          <span class="control-label">Grid Template Columns:</span>
+          <!-- Label for the grid-template-columns control -->
+          <select id="grid-template-columns-control">
+            <!-- Dropdown for grid-template-columns options -->
+            <option value="repeat(3, 1fr)" selected>repeat(3, 1fr)</option>
+            <!-- Default option: 3 equal columns -->
+            <option value="repeat(2, 1fr)">repeat(2, 1fr)</option>
+            <!-- 2 equal columns -->
+            <option value="1fr 2fr 1fr">1fr 2fr 1fr</option>
+            <!-- 3 columns with middle one twice as wide -->
+            <option value="100px auto 100px">100px auto 100px</option>
+            <!-- Fixed outer columns, flexible middle -->
+            <option value="minmax(100px, 1fr) 2fr minmax(100px, 1fr)">
+              minmax(100px, 1fr) 2fr minmax(100px, 1fr)
+            </option>
+            <!-- Responsive columns with constraints -->
+          </select>
+          <div class="property-display" id="grid-template-columns-display">
+            grid-template-columns: repeat(3, 1fr);
+          </div>
+          <!-- Display showing current property value -->
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Grid Template Rows:</span>
+          <!-- Label for the grid-template-rows control -->
+          <select id="grid-template-rows-control">
+            <!-- Dropdown for grid-template-rows options -->
+            <option value="repeat(3, 1fr)" selected>repeat(3, 1fr)</option>
+            <!-- Default option: 3 equal rows -->
+            <option value="repeat(3, auto)">repeat(3, auto)</option>
+            <!-- 3 auto-sized rows -->
+            <option value="100px 1fr 100px">100px 1fr 100px</option>
+            <!-- Fixed height for first and last rows -->
+            <option value="minmax(50px, auto) repeat(2, 1fr)">
+              minmax(50px, auto) repeat(2, 1fr)
+            </option>
+            <!-- First row responsive, others equal -->
+          </select>
+          <div class="property-display" id="grid-template-rows-display">
+            grid-template-rows: repeat(3, 1fr);
+          </div>
+          <!-- Display showing current property value -->
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Grid Gap:</span>
+          <!-- Label for the grid-gap control -->
+          <select id="grid-gap-control">
+            <!-- Dropdown for grid-gap options -->
+            <option value="10px" selected>10px</option>
+            <!-- Default option: 10px gap -->
+            <option value="5px">5px</option>
+            <!-- Smaller gap -->
+            <option value="20px">20px</option>
+            <!-- Larger gap -->
+            <option value="30px">30px</option>
+            <!-- Even larger gap -->
+            <option value="0">0 (No gap)</option>
+            <!-- No gap between items -->
+          </select>
+          <div class="property-display" id="grid-gap-display">
+            grid-gap: 10px;
+          </div>
+          <!-- Display showing current property value -->
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Justify Items:</span>
+          <!-- Label for the justify-items control -->
+          <select id="justify-items-control">
+            <!-- Dropdown for justify-items options -->
+            <option value="stretch" selected>stretch</option>
+            <!-- Default option: stretch items to fill width -->
+            <option value="start">start</option>
+            <!-- Align items to the start -->
+            <option value="center">center</option>
+            <!-- Center items horizontally -->
+            <option value="end">end</option>
+            <!-- Align items to the end -->
+          </select>
+          <div class="property-display" id="justify-items-display">
+            justify-items: stretch;
+          </div>
+          <!-- Display showing current property value -->
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Align Items:</span>
+          <!-- Label for the align-items control -->
+          <select id="align-items-control">
+            <!-- Dropdown for align-items options -->
+            <option value="stretch" selected>stretch</option>
+            <!-- Default option: stretch items to fill height -->
+            <option value="start">start</option>
+            <!-- Align items to the top -->
+            <option value="center">center</option>
+            <!-- Center items vertically -->
+            <option value="end">end</option>
+            <!-- Align items to the bottom -->
+          </select>
+          <div class="property-display" id="align-items-display">
+            align-items: stretch;
+          </div>
+          <!-- Display showing current property value -->
+        </div>
+      </div>
+    </div>
+    <!-- End of the first grid example -->
+
+    <!-- Second grid example: Grid Areas -->
+    <div class="container">
+      <h2>Grid Areas</h2>
+      <!-- Title for the second example -->
+      <p class="description">
+        This example demonstrates the use of <code>grid-template-areas</code> to
+        create a layout with named areas. You can see how different elements can
+        span multiple grid cells.
+      </p>
+      <!-- Description of the example -->
+      <div id="areas-grid" class="grid-container grid-areas">
+        <!-- Start of the grid areas container -->
+        <div class="grid-item area-header">Header</div>
+        <!-- Header area -->
+        <div class="grid-item area-sidebar">Sidebar</div>
+        <!-- Sidebar area -->
+        <div class="grid-item area-main">Main Content</div>
+        <!-- Main content area -->
+        <div class="grid-item area-footer">Footer</div>
+        <!-- Footer area -->
+      </div>
+      <!-- End of the grid areas container -->
+      <div class="controls">
+        <!-- Controls section for grid areas -->
+        <p>
+          <strong>Try it yourself:</strong> Select different layout templates to
+          see how grid areas work.
+        </p>
+        <!-- Instructions for the controls -->
+
+        <div class="control-group">
+          <span class="control-label">Layout Template:</span>
+          <!-- Label for the layout template control -->
+          <select id="grid-areas-template-control">
+            <!-- Dropdown for grid areas template options -->
+            <option value="standard" selected>Standard Layout</option>
+            <!-- Default option: standard layout -->
+            <option value="sidebar-right">Sidebar Right</option>
+            <!-- Layout with sidebar on the right -->
+            <option value="header-sidebar">Header Above Sidebar</option>
+            <!-- Layout with header above sidebar -->
+            <option value="no-sidebar">No Sidebar</option>
+            <!-- Layout without sidebar -->
+          </select>
+          <div class="property-display" id="grid-areas-display">
+            Using standard layout template
+          </div>
+          <!-- Display showing current template -->
+        </div>
+      </div>
+    </div>
+    <!-- End of the second grid example -->
+
+    <script>
+      // Function to update the basic grid properties
+      function updateBasicGrid() {
+        const gridContainer = document.getElementById("basic-grid"); // Get reference to the basic grid container
+
+        // Get values from controls
+        const columnsValue = document.getElementById(
+          "grid-template-columns-control"
+        ).value; // Get selected columns value
+        const rowsValue = document.getElementById(
+          "grid-template-rows-control"
+        ).value; // Get selected rows value
+        const gapValue = document.getElementById("grid-gap-control").value; // Get selected gap value
+        const justifyItemsValue = document.getElementById(
+          "justify-items-control"
+        ).value; // Get selected justify-items value
+        const alignItemsValue = document.getElementById(
+          "align-items-control"
+        ).value; // Get selected align-items value
+
+        // Apply values to the grid container
+        gridContainer.style.gridTemplateColumns = columnsValue; // Set grid-template-columns property
+        gridContainer.style.gridTemplateRows = rowsValue; // Set grid-template-rows property
+        gridContainer.style.gap = gapValue; // Set grid-gap property
+        gridContainer.style.justifyItems = justifyItemsValue; // Set justify-items property
+        gridContainer.style.alignItems = alignItemsValue; // Set align-items property
+
+        // Update display text
+        document.getElementById(
+          "grid-template-columns-display"
+        ).textContent = `grid-template-columns: ${columnsValue};`; // Update columns display
+        document.getElementById(
+          "grid-template-rows-display"
+        ).textContent = `grid-template-rows: ${rowsValue};`; // Update rows display
+        document.getElementById(
+          "grid-gap-display"
+        ).textContent = `grid-gap: ${gapValue};`; // Update gap display
+        document.getElementById(
+          "justify-items-display"
+        ).textContent = `justify-items: ${justifyItemsValue};`; // Update justify-items display
+        document.getElementById(
+          "align-items-display"
+        ).textContent = `align-items: ${alignItemsValue};`; // Update align-items display
+      }
+
+      // Function to update the grid areas layout
+      function updateGridAreas() {
+        const areasGrid = document.getElementById("areas-grid"); // Get reference to the grid areas container
+        const templateValue = document.getElementById(
+          "grid-areas-template-control"
+        ).value; // Get selected template value
+        const displayElement = document.getElementById("grid-areas-display"); // Get reference to the display element
+
+        // Define different layout templates
+        const templates = {
+          standard: {
+            areas: `
+              "header header header"
+              "sidebar main main"
+              "footer footer footer"
+            `,
+            columns: "1fr 3fr 1fr",
+            rows: "auto 1fr auto",
+          },
+          "sidebar-right": {
+            areas: `
+              "header header header"
+              "main main sidebar"
+              "footer footer footer"
+            `,
+            columns: "1fr 2fr 1fr",
+            rows: "auto 1fr auto",
+          },
+          "header-sidebar": {
+            areas: `
+              "header header header"
+              "sidebar sidebar sidebar"
+              "main main main"
+              "footer footer footer"
+            `,
+            columns: "1fr 2fr 1fr",
+            rows: "auto auto 1fr auto",
+          },
+          "no-sidebar": {
+            areas: `
+              "header header header"
+              "main main main"
+              "footer footer footer"
+            `,
+            columns: "1fr 1fr 1fr",
+            rows: "auto 1fr auto",
+          },
+        };
+
+        // Apply the selected template
+        const template = templates[templateValue]; // Get the template object
+        areasGrid.style.gridTemplateAreas = template.areas; // Set grid-template-areas property
+        areasGrid.style.gridTemplateColumns = template.columns; // Set grid-template-columns property
+        areasGrid.style.gridTemplateRows = template.rows; // Set grid-template-rows property
+
+        // Update display text
+        displayElement.textContent = `Using ${templateValue} layout template`; // Update display with template name
+      }
+
+      // Add event listeners to controls
+      document
+        .getElementById("grid-template-columns-control")
+        .addEventListener("change", updateBasicGrid); // Listen for changes to columns control
+      document
+        .getElementById("grid-template-rows-control")
+        .addEventListener("change", updateBasicGrid); // Listen for changes to rows control
+      document
+        .getElementById("grid-gap-control")
+        .addEventListener("change", updateBasicGrid); // Listen for changes to gap control
+      document
+        .getElementById("justify-items-control")
+        .addEventListener("change", updateBasicGrid); // Listen for changes to justify-items control
+      document
+        .getElementById("align-items-control")
+        .addEventListener("change", updateBasicGrid); // Listen for changes to align-items control
+      document
+        .getElementById("grid-areas-template-control")
+        .addEventListener("change", updateGridAreas); // Listen for changes to areas template control
+
+      // Initialize the grids with default values
+      document.addEventListener("DOMContentLoaded", function () {
+        updateBasicGrid(); // Initialize basic grid
+        updateGridAreas(); // Initialize grid areas
+
+        // Add click event listeners to grid items
+        document.querySelectorAll(".grid-item").forEach((item) => {
+          item.addEventListener("click", function () {
+            alert(`You clicked grid item ${this.textContent}`); // Shows an alert when a grid item is clicked
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

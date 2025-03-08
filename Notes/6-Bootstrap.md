@@ -1,0 +1,4 @@
+- Replaced by Tailwind CSS
+- This is the first time someone is showing you external CSS framework - just think of it as someone sat down and wrote down a lot of CSS classes for you
+- And just by putting these classes in your HTML, you can use them to style your HTML elements
+- For example, if you have made a button, you can use the class `btn` to style it

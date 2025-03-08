@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Defines the character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Makes the webpage responsive on different devices -->
+    <title>Flexbox Interactive Playground</title>
+    <!-- More descriptive and engaging title for the webpage -->
+    <style>
+      /* Global styles */
+      body {
+        font-family: "Segoe UI", Arial, sans-serif; /* Modern, more readable font stack */
+        background-color: #f8f9fa; /* Subtle light background for better contrast */
+        margin: 0; /* Removes default margin */
+        padding: 20px; /* Adds some space around the content */
+        color: #333; /* Default text color for better readability */
+        line-height: 1.6; /* Improves text readability with better line spacing */
+        max-width: 1200px; /* Limits maximum width for better readability on large screens */
+        margin: 0 auto; /* Centers the content horizontally */
+      }
+
+      /* Page header styling */
+      .page-header {
+        text-align: center; /* Centers the header text */
+        margin-bottom: 30px; /* Space below the header */
+        color: #2c3e50; /* Rich dark blue color for the header */
+        padding: 20px 0; /* Additional padding for better spacing */
+        border-bottom: 3px solid #e9ecef; /* Adds a subtle border for visual separation */
+      }
+
+      .page-header h1 {
+        margin-bottom: 10px; /* Reduces space between title and subtitle */
+        font-size: 2.5rem; /* Larger font size for more impact */
+      }
+
+      .page-header p {
+        font-size: 1.2rem; /* Larger subtitle for better readability */
+        color: #6c757d; /* Muted color for subtitle */
+        max-width: 600px; /* Limits width for better readability */
+        margin: 0 auto; /* Centers the subtitle */
+      }
+
+      /* Container for each flexbox example */
+      .container {
+        margin-bottom: 40px; /* More space between examples for better separation */
+        padding: 25px; /* More padding for better content spacing */
+        background-color: white; /* White background for the container */
+        border-radius: 12px; /* More rounded corners for modern look */
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Enhanced shadow for better depth */
+        transition: all 0.3s ease; /* Smooth transition for hover effect */
+      }
+
+      /* Container hover effect */
+      .container:hover {
+        transform: translateY(-5px); /* Slight lift effect on hover */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+      }
+
+      /* Title styling */
+      h2 {
+        color: #2c3e50; /* Rich dark blue color for better contrast */
+        border-bottom: 2px solid #e9ecef; /* Lighter border for subtle separation */
+        padding-bottom: 10px; /* Space between text and border */
+        margin-top: 0; /* Removes default top margin */
+        font-weight: 600; /* Semi-bold for better readability */
+        font-size: 1.8rem; /* Larger font size for better hierarchy */
+      }
+
+      /* Description text for each example */
+      .description {
+        margin-bottom: 20px; /* More space below the description */
+        color: #495057; /* Slightly darker color for better readability */
+        font-size: 1rem; /* Standard font size for better readability */
+        line-height: 1.7; /* Improved line height for readability */
+        max-width: 800px; /* Limits width for better readability */
+      }
+
+      /* Flexbox container */
+      .flex-container {
+        display: flex; /* Enables flexbox layout */
+        flex-direction: row; /* Items are placed in a row (default) */
+        justify-content: center; /* Centers items horizontally */
+        align-items: center; /* Centers items vertically */
+        height: 250px; /* Increased height for better visibility */
+        margin-bottom: 20px; /* More space below the container */
+        background-color: #f8f9fa; /* Light background to distinguish the flex area */
+        border: 2px dashed #ced4da; /* Slightly darker dashed border for better visibility */
+        border-radius: 10px; /* More rounded corners for the flex container */
+        padding: 15px; /* More padding inside the flex container */
+        position: relative; /* For positioning the axis indicators */
+        overflow: hidden; /* Ensures axis indicators don't overflow */
+        transition: all 0.3s ease; /* Smooth transition for property changes */
+      }
+
+      /* Axis indicators */
+      .main-axis,
+      .cross-axis {
+        position: absolute; /* Absolute positioning within the flex container */
+        color: #495057; /* Darker color for better visibility */
+        font-size: 0.85rem; /* Slightly larger font size for better readability */
+        font-weight: bold; /* Bold text for better visibility */
+        pointer-events: none; /* Prevents the indicators from interfering with interactions */
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.7
+        ); /* Semi-transparent background for better visibility */
+        padding: 3px 6px; /* Padding for better visibility */
+        border-radius: 4px; /* Rounded corners for the indicators */
+      }
+
+      .main-axis {
+        bottom: 10px; /* Position at the bottom */
+        right: 15px; /* Position from the right */
+      }
+
+      .cross-axis {
+        top: 15px; /* Position at the top */
+        left: 10px; /* Position from the left */
+        transform: rotate(-90deg); /* Rotate to align with the cross axis */
+        transform-origin: left top; /* Set rotation origin */
+      }
+
+      /* Circle items */
+      .circle {
+        width: 70px; /* Larger size for better visibility */
+        height: 70px; /* Larger size for better visibility */
+        border-radius: 50%; /* Makes the div circular */
+        display: flex; /* Enables flexbox for centering content */
+        justify-content: center; /* Centers content horizontally */
+        align-items: center; /* Centers content vertically */
+        font-weight: bold; /* Makes the text bold */
+        margin: 12px; /* Increased margin between circles */
+        color: white; /* White text for better contrast */
+        font-size: 22px; /* Larger font size for better readability */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow for better depth */
+        transition: all 0.3s ease; /* Smooth transition for all properties */
+        user-select: none; /* Prevents text selection */
+      }
+
+      /* Hover effect for circles */
+      .circle:hover {
+        transform: scale(1.2) rotate(10deg); /* Enlarges and rotates the circle more on hover */
+        cursor: pointer; /* Changes cursor to pointer on hover */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+        z-index: 10; /* Brings the hovered circle to the front */
+      }
+
+      /* Active effect for circles */
+      .circle:active {
+        transform: scale(0.9); /* Slightly shrinks the circle when clicked */
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Reduced shadow when clicked */
+      }
+
+      /* Pastel color classes with enhanced colors and gradients */
+      .pastel-1 {
+        background-color: #ff7eb9; /* Bright pink */
+        background-image: linear-gradient(
+          135deg,
+          #ff7eb9,
+          #ff65a3
+        ); /* Gradient effect for depth */
+        border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle white border for depth */
+      }
+
+      .pastel-2 {
+        background-color: #7eff8b; /* Bright green */
+        background-image: linear-gradient(
+          135deg,
+          #7eff8b,
+          #5ecc6f
+        ); /* Gradient effect for depth */
+        border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle white border for depth */
+      }
+
+      .pastel-3 {
+        background-color: #7eafff; /* Bright blue */
+        background-image: linear-gradient(
+          135deg,
+          #7eafff,
+          #5a8ced
+        ); /* Gradient effect for depth */
+        border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle white border for depth */
+      }
+
+      .pastel-4 {
+        background-color: #ffda7e; /* Bright gold */
+        background-image: linear-gradient(
+          135deg,
+          #ffda7e,
+          #ffcb55
+        ); /* Gradient effect for depth */
+        border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle white border for depth */
+      }
+
+      .pastel-5 {
+        background-color: #ff9f7e; /* Bright salmon */
+        background-image: linear-gradient(
+          135deg,
+          #ff9f7e,
+          #ff8a60
+        ); /* Gradient effect for depth */
+        border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle white border for depth */
+      }
+
+      /* Controls for flexbox properties */
+      .flex-controls {
+        display: flex; /* Enables flexbox for the controls */
+        flex-wrap: wrap; /* Allows controls to wrap on smaller screens */
+        gap: 20px; /* Increased space between control groups */
+        margin-bottom: 20px; /* Increased space below the controls */
+        padding: 15px; /* Padding around the controls */
+        background-color: #f1f3f5; /* Light background for the controls section */
+        border-radius: 8px; /* Rounded corners for the controls section */
+        border: 1px solid #dee2e6; /* Subtle border for the controls section */
+      }
+
+      .control-group {
+        display: flex; /* Enables flexbox for the control group */
+        flex-direction: column; /* Stacks controls vertically */
+        min-width: 220px; /* Increased minimum width for the control group */
+        flex: 1; /* Allows control groups to grow */
+      }
+
+      .control-label {
+        font-weight: bold; /* Bold text for the label */
+        margin-bottom: 8px; /* Increased space below the label */
+        color: #343a40; /* Darker color for better readability */
+        font-size: 0.95rem; /* Slightly smaller font size */
+      }
+
+      select,
+      button {
+        padding: 10px 15px; /* Increased padding for better clickability */
+        border-radius: 6px; /* More rounded corners */
+        border: 1px solid #ced4da; /* Light border */
+        background-color: white; /* White background */
+        font-family: inherit; /* Inherits font from parent */
+        cursor: pointer; /* Changes cursor to pointer */
+        transition: all 0.2s ease; /* Smooth transition */
+        font-size: 0.95rem; /* Slightly smaller font size */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+      }
+
+      select:hover,
+      button:hover {
+        border-color: #adb5bd; /* Darker border on hover */
+        background-color: #f8f9fa; /* Light background on hover */
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+      }
+
+      select:focus,
+      button:focus {
+        outline: none; /* Removes default focus outline */
+        border-color: #80bdff; /* Blue border on focus */
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Blue glow on focus */
+      }
+
+      button {
+        background-color: #007bff; /* Blue background for buttons */
+        color: white; /* White text for buttons */
+        border: none; /* No border for buttons */
+        font-weight: bold; /* Bold text for buttons */
+      }
+
+      button:hover {
+        background-color: #0069d9; /* Darker blue on hover */
+        transform: translateY(-2px); /* Slight lift effect on hover */
+      }
+
+      button:active {
+        transform: translateY(1px); /* Slight press effect when clicked */
+      }
+
+      /* Property value display */
+      .property-display {
+        margin-top: 15px; /* Space above the display */
+        padding: 10px; /* Padding around the display */
+        background-color: #e9ecef; /* Light background for the display */
+        border-radius: 6px; /* Rounded corners for the display */
+        font-family: monospace; /* Monospace font for code-like appearance */
+        color: #495057; /* Dark color for better readability */
+        font-size: 0.9rem; /* Smaller font size */
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        body {
+          padding: 15px; /* Reduced padding on smaller screens */
+        }
+
+        .page-header h1 {
+          font-size: 2rem; /* Smaller title on smaller screens */
+        }
+
+        .page-header p {
+          font-size: 1rem; /* Smaller subtitle on smaller screens */
+        }
+
+        .container {
+          padding: 20px; /* Reduced padding on smaller screens */
+        }
+
+        .flex-container {
+          height: auto; /* Auto height on smaller screens */
+          min-height: 220px; /* Minimum height on smaller screens */
+        }
+
+        .circle {
+          width: 55px; /* Smaller circles on smaller screens */
+          height: 55px; /* Smaller circles on smaller screens */
+          font-size: 18px; /* Smaller font on smaller screens */
+          margin: 8px; /* Reduced margin on smaller screens */
+        }
+
+        .flex-controls {
+          flex-direction: column; /* Stack controls vertically on smaller screens */
+          gap: 15px; /* Reduced gap on smaller screens */
+        }
+
+        .control-group {
+          min-width: 100%; /* Full width on smaller screens */
+        }
+      }
+
+      /* Dark mode support */
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #212529; /* Dark background */
+          color: #e9ecef; /* Light text color */
+        }
+
+        .page-header {
+          color: #f8f9fa; /* Lighter color for header */
+          border-bottom-color: #343a40; /* Darker border */
+        }
+
+        .page-header p {
+          color: #adb5bd; /* Lighter subtitle color */
+        }
+
+        .container {
+          background-color: #343a40; /* Dark background for container */
+          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Darker shadow */
+        }
+
+        h2 {
+          color: #f8f9fa; /* Lighter color for headings */
+          border-bottom-color: #495057; /* Darker border */
+        }
+
+        .description {
+          color: #ced4da; /* Lighter color for description */
+        }
+
+        .flex-container {
+          background-color: #2b3035; /* Darker background for flex container */
+          border-color: #495057; /* Darker border */
+        }
+
+        .main-axis,
+        .cross-axis {
+          color: #ced4da; /* Lighter color for axis indicators */
+          background-color: rgba(
+            33,
+            37,
+            41,
+            0.7
+          ); /* Darker semi-transparent background */
+        }
+
+        .flex-controls {
+          background-color: #2b3035; /* Darker background for controls */
+          border-color: #495057; /* Darker border */
+        }
+
+        .control-label {
+          color: #e9ecef; /* Lighter color for labels */
+        }
+
+        select,
+        button {
+          background-color: #495057; /* Darker background for inputs */
+          color: #e9ecef; /* Lighter text color */
+          border-color: #6c757d; /* Darker border */
+        }
+
+        select:hover,
+        button:hover {
+          background-color: #343a40; /* Even darker on hover */
+          border-color: #adb5bd; /* Lighter border on hover */
+        }
+
+        .property-display {
+          background-color: #343a40; /* Darker background for display */
+          color: #e9ecef; /* Lighter text color */
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="page-header">
+      <h1>Flexbox Interactive Playground</h1>
+      <!-- Main page title with more engaging wording -->
+      <p>Experiment with CSS Flexbox properties and see real-time results</p>
+      <!-- More descriptive subtitle explaining the interactive nature -->
+    </header>
+
+    <div class="container">
+      <h2>1. Flexbox Layout Control</h2>
+      <!-- More descriptive section title -->
+      <p class="description">
+        This interactive example demonstrates how flexbox properties affect the
+        layout of items. Use the controls below to change the
+        <code>justify-content</code> (main axis alignment) and
+        <code>align-items</code> (cross axis alignment) properties and observe
+        how the circular items respond in real-time.
+      </p>
+      <!-- More detailed and educational description -->
+
+      <div class="flex-controls">
+        <div class="control-group">
+          <span class="control-label">Flex Direction:</span>
+          <!-- Control for flex-direction property -->
+          <select id="flex-direction-control">
+            <option value="row" selected>row</option>
+            <option value="row-reverse">row-reverse</option>
+            <option value="column">column</option>
+            <option value="column-reverse">column-reverse</option>
+          </select>
+          <div class="property-display" id="flex-direction-display">
+            flex-direction: row;
+          </div>
+          <!-- Display showing the current flex-direction value -->
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Justify Content (Main Axis):</span>
+          <!-- More descriptive label with axis information -->
+          <select id="justify-content-control">
+            <!-- Dropdown for justify-content property -->
+            <option value="center" selected>center</option>
+            <option value="flex-start">flex-start</option>
+            <option value="flex-end">flex-end</option>
+            <option value="space-between">space-between</option>
+            <option value="space-around">space-around</option>
+            <option value="space-evenly">space-evenly</option>
+          </select>
+          <div class="property-display" id="justify-content-display">
+            justify-content: center;
+          </div>
+          <!-- Display showing the current CSS property value -->
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Align Items (Cross Axis):</span>
+          <!-- More descriptive label with axis information -->
+          <select id="align-items-control">
+            <!-- Dropdown for align-items property -->
+            <option value="center" selected>center</option>
+            <option value="flex-start">flex-start</option>
+            <option value="flex-end">flex-end</option>
+            <option value="stretch">stretch</option>
+            <option value="baseline">baseline</option>
+          </select>
+          <div class="property-display" id="align-items-display">
+            align-items: center;
+          </div>
+          <!-- Display showing the current CSS property value -->
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Flex Wrap:</span>
+          <select id="flex-wrap-control">
+            <option value="nowrap" selected>nowrap</option>
+            <option value="wrap">wrap</option>
+            <option value="wrap-reverse">wrap-reverse</option>
+          </select>
+          <div class="property-display" id="flex-wrap-display">
+            flex-wrap: nowrap;
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Align Content:</span>
+          <select id="align-content-control">
+            <option value="normal" selected>normal</option>
+            <option value="flex-start">flex-start</option>
+            <option value="flex-end">flex-end</option>
+            <option value="center">center</option>
+            <option value="space-between">space-between</option>
+            <option value="space-around">space-around</option>
+            <option value="space-evenly">space-evenly</option>
+            <option value="stretch">stretch</option>
+          </select>
+          <div class="property-display" id="align-content-display">
+            align-content: normal;
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-controls">
+        <div class="control-group">
+          <span class="control-label">Gap:</span>
+          <select id="gap-control">
+            <option value="0px">0px</option>
+            <option value="5px">5px</option>
+            <option value="10px" selected>10px</option>
+            <option value="20px">20px</option>
+            <option value="30px">30px</option>
+            <option value="50px">50px</option>
+          </select>
+          <div class="property-display" id="gap-display">gap: 10px;</div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Row Gap:</span>
+          <select id="row-gap-control">
+            <option value="0px" selected>0px</option>
+            <option value="5px">5px</option>
+            <option value="10px">10px</option>
+            <option value="20px">20px</option>
+            <option value="30px">30px</option>
+            <option value="50px">50px</option>
+          </select>
+          <div class="property-display" id="row-gap-display">row-gap: 0px;</div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Column Gap:</span>
+          <select id="column-gap-control">
+            <option value="0px" selected>0px</option>
+            <option value="5px">5px</option>
+            <option value="10px">10px</option>
+            <option value="20px">20px</option>
+            <option value="30px">30px</option>
+            <option value="50px">50px</option>
+          </select>
+          <div class="property-display" id="column-gap-display">
+            column-gap: 0px;
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-controls">
+        <div class="control-group">
+          <span class="control-label">Item Count:</span>
+          <select id="item-count-control">
+            <option value="3">3 items</option>
+            <option value="5" selected>5 items</option>
+            <option value="8">8 items</option>
+            <option value="12">12 items</option>
+          </select>
+          <button id="update-items-btn">Update Items</button>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Item Properties:</span>
+          <select id="item-select">
+            <option value="1">Item 1</option>
+            <option value="2">Item 2</option>
+            <option value="3">Item 3</option>
+            <option value="4">Item 4</option>
+            <option value="5">Item 5</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Flex Grow:</span>
+          <select id="flex-grow-control">
+            <option value="0" selected>0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+          <div class="property-display" id="flex-grow-display">
+            flex-grow: 0;
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Flex Shrink:</span>
+          <select id="flex-shrink-control">
+            <option value="0">0</option>
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+          <div class="property-display" id="flex-shrink-display">
+            flex-shrink: 1;
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-controls">
+        <div class="control-group">
+          <span class="control-label">Flex Basis:</span>
+          <select id="flex-basis-control">
+            <option value="auto" selected>auto</option>
+            <option value="0">0</option>
+            <option value="50px">50px</option>
+            <option value="100px">100px</option>
+            <option value="150px">150px</option>
+            <option value="200px">200px</option>
+          </select>
+          <div class="property-display" id="flex-basis-display">
+            flex-basis: auto;
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Align Self:</span>
+          <select id="align-self-control">
+            <option value="auto" selected>auto</option>
+            <option value="flex-start">flex-start</option>
+            <option value="flex-end">flex-end</option>
+            <option value="center">center</option>
+            <option value="stretch">stretch</option>
+            <option value="baseline">baseline</option>
+          </select>
+          <div class="property-display" id="align-self-display">
+            align-self: auto;
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">Order:</span>
+          <select id="order-control">
+            <option value="0" selected>0</option>
+            <option value="-1">-1</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+          <div class="property-display" id="order-display">order: 0;</div>
+        </div>
+      </div>
+
+      <div class="flex-container" id="demo-flex-container">
+        <span class="main-axis">Main Axis →</span>
+        <!-- Indicator for the main axis -->
+        <span class="cross-axis">Cross Axis →</span>
+        <!-- Indicator for the cross axis -->
+
+        <div class="circle pastel-1">1</div>
+        <!-- Pink circle with number 1 -->
+        <div class="circle pastel-2">2</div>
+        <!-- Green circle with number 2 -->
+        <div class="circle pastel-3">3</div>
+        <!-- Blue circle with number 3 -->
+        <div class="circle pastel-4">4</div>
+        <!-- Gold circle with number 4 -->
+        <div class="circle pastel-5">5</div>
+        <!-- Salmon circle with number 5 -->
+      </div>
+    </div>
+
+    <script>
+      // Get references to the controls, displays, and flex container
+      const flexDirectionControl = document.getElementById(
+        "flex-direction-control"
+      ); // Reference to flex-direction dropdown
+      const justifyContentControl = document.getElementById(
+        "justify-content-control"
+      ); // Reference to justify-content dropdown
+      const alignItemsControl = document.getElementById("align-items-control"); // Reference to align-items dropdown
+      const flexWrapControl = document.getElementById("flex-wrap-control"); // Reference to flex-wrap dropdown
+      const alignContentControl = document.getElementById(
+        "align-content-control"
+      ); // Reference to align-content dropdown
+      const gapControl = document.getElementById("gap-control"); // Reference to gap dropdown
+      const rowGapControl = document.getElementById("row-gap-control"); // Reference to row-gap dropdown
+      const columnGapControl = document.getElementById("column-gap-control"); // Reference to column-gap dropdown
+      const itemCountControl = document.getElementById("item-count-control"); // Reference to item count dropdown
+      const updateItemsBtn = document.getElementById("update-items-btn"); // Reference to update items button
+      const itemSelect = document.getElementById("item-select"); // Reference to item select dropdown
+      const flexGrowControl = document.getElementById("flex-grow-control"); // Reference to flex-grow dropdown
+      const flexShrinkControl = document.getElementById("flex-shrink-control"); // Reference to flex-shrink dropdown
+      const flexBasisControl = document.getElementById("flex-basis-control"); // Reference to flex-basis dropdown
+      const alignSelfControl = document.getElementById("align-self-control"); // Reference to align-self dropdown
+      const orderControl = document.getElementById("order-control"); // Reference to order dropdown
+
+      const flexDirectionDisplay = document.getElementById(
+        "flex-direction-display"
+      ); // Reference to flex-direction display
+      const justifyContentDisplay = document.getElementById(
+        "justify-content-display"
+      ); // Reference to justify-content display
+      const alignItemsDisplay = document.getElementById("align-items-display"); // Reference to align-items display
+      const flexWrapDisplay = document.getElementById("flex-wrap-display"); // Reference to flex-wrap display
+      const alignContentDisplay = document.getElementById(
+        "align-content-display"
+      ); // Reference to align-content display
+      const gapDisplay = document.getElementById("gap-display"); // Reference to gap display
+      const rowGapDisplay = document.getElementById("row-gap-display"); // Reference to row-gap display
+      const columnGapDisplay = document.getElementById("column-gap-display"); // Reference to column-gap display
+      const flexGrowDisplay = document.getElementById("flex-grow-display"); // Reference to flex-grow display
+      const flexShrinkDisplay = document.getElementById("flex-shrink-display"); // Reference to flex-shrink display
+      const flexBasisDisplay = document.getElementById("flex-basis-display"); // Reference to flex-basis display
+      const alignSelfDisplay = document.getElementById("align-self-display"); // Reference to align-self display
+      const orderDisplay = document.getElementById("order-display"); // Reference to order display
+
+      const flexContainer = document.getElementById("demo-flex-container"); // Reference to the flex container
+
+      // Function to update the flexbox container and display the current property values
+      function updateFlexContainer() {
+        // Update flex-direction property and display
+        const directionValue = flexDirectionControl.value; // Get the selected flex-direction value
+        flexContainer.style.flexDirection = directionValue; // Apply the flex-direction value to the flex container
+        flexDirectionDisplay.textContent = `flex-direction: ${directionValue};`; // Update the display text
+
+        // Update justify-content property and display
+        const justifyValue = justifyContentControl.value; // Get the selected justify-content value
+        flexContainer.style.justifyContent = justifyValue; // Apply the justify-content value to the flex container
+        justifyContentDisplay.textContent = `justify-content: ${justifyValue};`; // Update the display text
+
+        // Update align-items property and display
+        const alignValue = alignItemsControl.value; // Get the selected align-items value
+        flexContainer.style.alignItems = alignValue; // Apply the align-items value to the flex container
+        alignItemsDisplay.textContent = `align-items: ${alignValue};`; // Update the display text
+      }
+
+      // Add event listeners to update flexbox properties when controls change
+      flexDirectionControl.addEventListener("change", updateFlexContainer); // Listen for changes to flex-direction control
+      justifyContentControl.addEventListener("change", updateFlexContainer); // Listen for changes to justify-content control
+      alignItemsControl.addEventListener("change", updateFlexContainer); // Listen for changes to align-items control
+
+      // Initialize the display with default values
+      updateFlexContainer(); // Call the update function to set initial values
+    </script>
+  </body>
+</html>

@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Defines the character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Makes the webpage responsive on different devices -->
+    <title>Bootstrap Learning App</title>
+    <!-- Title for the webpage -->
+    <!-- Bootstrap CSS CDN link -->
+    <link
+      id="bootstrap-css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Imports Bootstrap CSS -->
+    <style>
+      /* Custom styles to enhance Bootstrap */
+      body {
+        padding-top: 20px; /* Adds space at the top of the page */
+        background-color: #f8f9fa; /* Light background color for better contrast */
+      }
+
+      .header-section {
+        background-color: #6610f2; /* Purple background for header */
+        color: white; /* White text for contrast */
+        padding: 40px 0; /* Padding for the header section */
+        margin-bottom: 30px; /* Space below the header */
+        border-radius: 0.5rem; /* Slightly rounded corners */
+      }
+
+      .component-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+        margin-bottom: 20px; /* Space between cards */
+        height: 100%; /* Makes all cards the same height */
+      }
+
+      .component-card:hover {
+        transform: translateY(-5px); /* Slight lift effect on hover */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+      }
+
+      .demo-section {
+        background-color: white; /* White background for demo sections */
+        border-radius: 0.5rem; /* Rounded corners */
+        padding: 20px; /* Padding inside demo sections */
+        margin-bottom: 30px; /* Space between demo sections */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+      }
+
+      .code-block {
+        background-color: #f8f9fa; /* Light background for code blocks */
+        border-left: 4px solid #6610f2; /* Purple accent border */
+        padding: 15px; /* Padding inside code blocks */
+        margin: 15px 0; /* Margin around code blocks */
+        border-radius: 0 0.25rem 0.25rem 0; /* Rounded corners on the right side */
+        font-family: monospace; /* Monospace font for code */
+        overflow-x: auto; /* Horizontal scroll for long code */
+      }
+
+      .footer {
+        margin-top: 50px; /* Space above footer */
+        padding: 20px 0; /* Padding inside footer */
+        background-color: #343a40; /* Dark background for footer */
+        color: white; /* White text for contrast */
+        border-radius: 0.5rem; /* Rounded corners */
+      }
+
+      /* Toggle switch styles */
+      .toggle-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        background-color: white;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 34px;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+
+      input:checked + .slider {
+        background-color: #6610f2;
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(26px);
+      }
+
+      /* Basic styles for when Bootstrap is disabled */
+      .no-bootstrap button {
+        padding: 5px 10px;
+        margin: 5px;
+        background-color: #e9e9e9;
+        border: 1px solid #999;
+        border-radius: 3px;
+      }
+
+      .no-bootstrap .form-control {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #999;
+      }
+
+      .no-bootstrap .alert {
+        padding: 10px;
+        border: 1px solid #999;
+        margin-bottom: 10px;
+      }
+
+      .no-bootstrap .card {
+        border: 1px solid #999;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .no-bootstrap .navbar {
+        background-color: #e9e9e9;
+        padding: 10px;
+      }
+
+      .no-bootstrap .navbar a {
+        margin-right: 10px;
+        color: #333;
+        text-decoration: none;
+      }
+
+      .no-bootstrap .list-group-item {
+        border: 1px solid #999;
+        padding: 10px;
+        margin-bottom: -1px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Bootstrap Toggle Switch -->
+    <div class="toggle-container">
+      <label class="switch">
+        <input type="checkbox" id="bootstrap-toggle" checked />
+        <span class="slider"></span>
+      </label>
+      <span id="toggle-status">Bootstrap: ON</span>
+    </div>
+
+    <!-- Main container -->
+    <div class="container">
+      <!-- Header section -->
+      <div class="header-section text-center">
+        <h1 class="display-4">Bootstrap Learning App</h1>
+        <!-- Main title with Bootstrap display class -->
+        <p class="lead">
+          Learn the basics of Bootstrap - the world's most popular CSS framework
+        </p>
+        <!-- Subtitle with Bootstrap lead class -->
+      </div>
+
+      <!-- Introduction section -->
+      <div class="row mb-5">
+        <div class="col-md-12">
+          <div class="demo-section">
+            <h2>What is Bootstrap?</h2>
+            <!-- Section title -->
+            <p>
+              Bootstrap is a free and open-source CSS framework directed at
+              responsive, mobile-first front-end web development. It contains
+              HTML, CSS, and JavaScript-based design templates for typography,
+              forms, buttons, navigation, and other interface components.
+            </p>
+            <!-- Introduction text -->
+
+            <div class="alert alert-info">
+              <!-- Bootstrap alert component -->
+              <strong>Quick Tip:</strong> Bootstrap uses a 12-column grid system
+              for creating page layouts.
+              <!-- Alert content -->
+            </div>
+
+            <h3>Getting Started</h3>
+            <!-- Subsection title -->
+            <p>To use Bootstrap in your project, you can include it via CDN:</p>
+            <!-- Instruction text -->
+
+            <div class="code-block">
+              &lt;link
+              href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+              rel="stylesheet"&gt;
+              <!-- Code example -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bootstrap components section -->
+      <h2 class="mb-4">Key Bootstrap Components</h2>
+      <!-- Section title -->
+
+      <div class="row">
+        <!-- Grid system card -->
+        <div class="col-md-4">
+          <div class="card component-card">
+            <div class="card-body">
+              <!-- Bootstrap card component -->
+              <h5 class="card-title">Grid System</h5>
+              <!-- Card title -->
+              <p class="card-text">
+                Bootstrap's grid system uses a series of containers, rows, and
+                columns to layout and align content.
+              </p>
+              <!-- Card description -->
+              <div class="code-block">
+                &lt;div class="row"&gt;<br />
+                &nbsp;&nbsp;&lt;div class="col-md-6"&gt;Column 1&lt;/div&gt;<br />
+                &nbsp;&nbsp;&lt;div class="col-md-6"&gt;Column 2&lt;/div&gt;<br />
+                &lt;/div&gt;
+                <!-- Code example -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buttons card -->
+        <div class="col-md-4">
+          <div class="card component-card">
+            <div class="card-body">
+              <h5 class="card-title">Buttons</h5>
+              <!-- Card title -->
+              <p class="card-text">
+                Bootstrap includes several predefined button styles, each
+                serving its own semantic purpose.
+              </p>
+              <!-- Card description -->
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <!-- Flex container for buttons -->
+                <button class="btn btn-primary">Primary</button>
+                <!-- Primary button -->
+                <button class="btn btn-secondary">Secondary</button>
+                <!-- Secondary button -->
+                <button class="btn btn-success">Success</button>
+                <!-- Success button -->
+                <button class="btn btn-danger">Danger</button>
+                <!-- Danger button -->
+              </div>
+              <div class="code-block">
+                &lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
+                <!-- Code example -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alerts card -->
+        <div class="col-md-4">
+          <div class="card component-card">
+            <div class="card-body">
+              <h5 class="card-title">Alerts</h5>
+              <!-- Card title -->
+              <p class="card-text">
+                Alerts provide contextual feedback messages for typical user
+                actions.
+              </p>
+              <!-- Card description -->
+              <div class="alert alert-success mb-3">
+                This is a success alert!
+                <!-- Success alert example -->
+              </div>
+              <div class="code-block">
+                &lt;div class="alert alert-success"&gt;<br />
+                &nbsp;&nbsp;This is a success alert!<br />
+                &lt;/div&gt;
+                <!-- Code example -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second row of components -->
+      <div class="row mt-4">
+        <!-- Forms card -->
+        <div class="col-md-4">
+          <div class="card component-card">
+            <div class="card-body">
+              <h5 class="card-title">Forms</h5>
+              <!-- Card title -->
+              <p class="card-text">
+                Bootstrap provides several form control styles and layout
+                options.
+              </p>
+              <!-- Card description -->
+              <form class="mb-3">
+                <div class="mb-3">
+                  <label for="exampleInput" class="form-label"
+                    >Email address</label
+                  >
+                  <!-- Form label -->
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="exampleInput"
+                    placeholder="name@example.com"
+                  />
+                  <!-- Form input -->
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <!-- Submit button -->
+              </form>
+              <div class="code-block">
+                &lt;input type="email" class="form-control"&gt;
+                <!-- Code example -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navbar card -->
+        <div class="col-md-4">
+          <div class="card component-card">
+            <div class="card-body">
+              <h5 class="card-title">Navbar</h5>
+              <!-- Card title -->
+              <p class="card-text">
+                Bootstrap's responsive navigation header includes support for
+                branding, navigation, and more.
+              </p>
+              <!-- Card description -->
+              <nav class="navbar navbar-expand navbar-light bg-light mb-3">
+                <!-- Navbar example -->
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Brand</a>
+                  <!-- Navbar brand -->
+                  <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                      </li>
+                      <!-- Navbar item -->
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                      </li>
+                      <!-- Navbar item -->
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                      </li>
+                      <!-- Navbar item -->
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+              <div class="code-block">
+                &lt;nav class="navbar navbar-expand navbar-light
+                bg-light"&gt;...&lt;/nav&gt;
+                <!-- Code example -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cards component -->
+        <div class="col-md-4">
+          <div class="card component-card">
+            <div class="card-body">
+              <h5 class="card-title">Cards</h5>
+              <!-- Card title -->
+              <p class="card-text">
+                Bootstrap's cards provide a flexible and extensible content
+                container with multiple variants.
+              </p>
+              <!-- Card description -->
+              <div class="card mb-3">
+                <div class="card-header">Featured</div>
+                <!-- Card header -->
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <!-- Inner card title -->
+                  <p class="card-text">Some quick example text.</p>
+                  <!-- Inner card text -->
+                </div>
+              </div>
+              <div class="code-block">
+                &lt;div class="card"&gt;<br />
+                &nbsp;&nbsp;&lt;div class="card-body"&gt;...&lt;/div&gt;<br />
+                &lt;/div&gt;
+                <!-- Code example -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Practical example section -->
+      <div class="demo-section mt-5">
+        <h2>Practical Example: Bootstrap Form</h2>
+        <!-- Section title -->
+        <p>
+          Here's a complete example of a Bootstrap form with various components:
+        </p>
+        <!-- Description -->
+
+        <form class="row g-3 mb-4">
+          <!-- Name fields -->
+          <div class="col-md-6">
+            <label for="firstName" class="form-label">First name</label>
+            <!-- Form label -->
+            <input type="text" class="form-control" id="firstName" />
+            <!-- Form input -->
+          </div>
+          <div class="col-md-6">
+            <label for="lastName" class="form-label">Last name</label>
+            <!-- Form label -->
+            <input type="text" class="form-control" id="lastName" />
+            <!-- Form input -->
+          </div>
+
+          <!-- Email field -->
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <!-- Form label -->
+            <input type="email" class="form-control" id="email" />
+            <!-- Form input -->
+          </div>
+
+          <!-- Phone field -->
+          <div class="col-md-6">
+            <label for="phone" class="form-label">Phone</label>
+            <!-- Form label -->
+            <input type="tel" class="form-control" id="phone" />
+            <!-- Form input -->
+          </div>
+
+          <!-- Address field -->
+          <div class="col-12">
+            <label for="address" class="form-label">Address</label>
+            <!-- Form label -->
+            <input type="text" class="form-control" id="address" />
+            <!-- Form input -->
+          </div>
+
+          <!-- City, state, zip fields -->
+          <div class="col-md-5">
+            <label for="city" class="form-label">City</label>
+            <!-- Form label -->
+            <input type="text" class="form-control" id="city" />
+            <!-- Form input -->
+          </div>
+          <div class="col-md-4">
+            <label for="state" class="form-label">State</label>
+            <!-- Form label -->
+            <select id="state" class="form-select">
+              <!-- Form select -->
+              <option selected>Choose...</option>
+              <!-- Default option -->
+              <option>California</option>
+              <!-- Option -->
+              <option>New York</option>
+              <!-- Option -->
+              <option>Texas</option>
+              <!-- Option -->
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label for="zip" class="form-label">Zip</label>
+            <!-- Form label -->
+            <input type="text" class="form-control" id="zip" />
+            <!-- Form input -->
+          </div>
+
+          <!-- Checkbox -->
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck" />
+              <!-- Checkbox input -->
+              <label class="form-check-label" for="gridCheck">
+                Subscribe to newsletter
+                <!-- Checkbox label -->
+              </label>
+            </div>
+          </div>
+
+          <!-- Submit button -->
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <!-- Submit button -->
+          </div>
+        </form>
+
+        <h3>Key Takeaways</h3>
+        <!-- Subsection title -->
+        <ul class="list-group mb-4">
+          <li class="list-group-item">
+            Bootstrap uses classes like <code>form-control</code>,
+            <code>form-label</code>, and <code>form-select</code> for form
+            elements
+          </li>
+          <!-- List item -->
+          <li class="list-group-item">
+            The grid system (<code>row</code> and <code>col-*</code>) helps
+            create responsive layouts
+          </li>
+          <!-- List item -->
+          <li class="list-group-item">
+            Bootstrap's utility classes like <code>mb-4</code> (margin-bottom)
+            help with spacing
+          </li>
+          <!-- List item -->
+          <li class="list-group-item">
+            Components like <code>form-check</code> provide styled form controls
+          </li>
+          <!-- List item -->
+        </ul>
+      </div>
+
+      <!-- Bootstrap utilities section -->
+      <div class="demo-section">
+        <h2>Bootstrap Utilities</h2>
+        <!-- Section title -->
+        <p>
+          Bootstrap includes dozens of utilities - helper classes for common CSS
+          properties:
+        </p>
+        <!-- Description -->
+
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Spacing</h4>
+            <!-- Subsection title -->
+            <div class="code-block">
+              &lt;div class="mt-3"&gt;Margin top 3&lt;/div&gt;<br />
+              &lt;div class="p-4"&gt;Padding 4&lt;/div&gt;<br />
+              &lt;div class="mb-5"&gt;Margin bottom 5&lt;/div&gt;
+              <!-- Code examples -->
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h4>Colors</h4>
+            <!-- Subsection title -->
+            <div class="code-block">
+              &lt;div class="text-primary"&gt;Primary text&lt;/div&gt;<br />
+              &lt;div class="bg-success"&gt;Success background&lt;/div&gt;<br />
+              &lt;div class="border border-danger"&gt;Danger border&lt;/div&gt;
+              <!-- Code examples -->
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <h4>Display</h4>
+            <!-- Subsection title -->
+            <div class="code-block">
+              &lt;div class="d-flex"&gt;Flexbox container&lt;/div&gt;<br />
+              &lt;div class="d-none d-md-block"&gt;Hidden on small
+              screens&lt;/div&gt;
+              <!-- Code examples -->
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h4>Text</h4>
+            <!-- Subsection title -->
+            <div class="code-block">
+              &lt;p class="text-center"&gt;Centered text&lt;/p&gt;<br />
+              &lt;p class="fw-bold"&gt;Bold text&lt;/p&gt;<br />
+              &lt;p class="text-truncate"&gt;Truncated text...&lt;/p&gt;
+              <!-- Code examples -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer text-center">
+        <p class="mb-0">Bootstrap Learning App &copy; 2023</p>
+        <!-- Footer text -->
+        <p class="mb-0"><small>Created for educational purposes</small></p>
+        <!-- Footer subtext -->
+      </div>
+    </div>
+
+    <!-- Bootstrap JS bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Imports Bootstrap JavaScript -->
+
+    <!-- Toggle Bootstrap Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggle = document.getElementById("bootstrap-toggle");
+        const bootstrapCSS = document.getElementById("bootstrap-css");
+        const toggleStatus = document.getElementById("toggle-status");
+
+        toggle.addEventListener("change", function () {
+          if (this.checked) {
+            // Enable Bootstrap
+            bootstrapCSS.setAttribute(
+              "href",
+              "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            );
+            document.body.classList.remove("no-bootstrap");
+            toggleStatus.textContent = "Bootstrap: ON";
+          } else {
+            // Disable Bootstrap
+            bootstrapCSS.setAttribute("href", "");
+            document.body.classList.add("no-bootstrap");
+            toggleStatus.textContent = "Bootstrap: OFF";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

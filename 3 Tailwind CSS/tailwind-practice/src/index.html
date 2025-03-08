@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Defines the character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Sets the viewport for responsive design -->
+    <title>Tailwind CSS Practice</title>
+    <!-- Sets the title of the webpage -->
+    <link href="../dist/output.css" rel="stylesheet" />
+    <!-- Links to the compiled CSS file -->
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <!-- Sets background color and minimum height -->
+
+    <!-- Header Section -->
+    <header class="bg-blue-600 text-white p-4 shadow-md">
+      <!-- Header with blue background, white text, padding, and shadow -->
+      <div class="container mx-auto">
+        <!-- Centers content with auto margins -->
+        <h1 class="text-3xl font-bold">Tailwind CSS Practice</h1>
+        <!-- Large, bold title -->
+        <p class="mt-2">Learning to use Tailwind CSS utility classes</p>
+        <!-- Paragraph with top margin -->
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 mt-8">
+      <!-- Main content container with padding and top margin -->
+
+      <!-- Navigation Links -->
+      <div class="mb-8 bg-white p-4 rounded-lg shadow-md text-center">
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">Examples</h2>
+        <div class="flex justify-center space-x-4">
+          <a href="form.html" class="text-blue-600 hover:underline"
+            >Form Example</a
+          >
+          <a href="dark-mode.html" class="text-blue-600 hover:underline"
+            >Dark Mode Example</a
+          >
+        </div>
+      </div>
+
+      <!-- Card Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Responsive grid layout -->
+
+        <!-- Card 1 -->
+        <div
+          class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+        >
+          <!-- Card with white background, rounded corners, shadow, and hover effect -->
+          <h2 class="text-xl font-semibold text-gray-800 mb-2">
+            Utility-First
+          </h2>
+          <!-- Card title -->
+          <p class="text-gray-600">
+            Tailwind uses a utility-first approach to styling elements.
+          </p>
+          <!-- Card description -->
+          <button
+            class="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-colors"
+          >
+            Learn More
+            <!-- Button with hover effect -->
+          </button>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+        >
+          <h2 class="text-xl font-semibold text-gray-800 mb-2">
+            Responsive Design
+          </h2>
+          <p class="text-gray-600">
+            Create responsive layouts using Tailwind's breakpoint prefixes.
+          </p>
+          <button
+            class="mt-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded transition-colors"
+          >
+            Learn More
+          </button>
+        </div>
+
+        <!-- Card 3 -->
+        <div
+          class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+        >
+          <h2 class="text-xl font-semibold text-gray-800 mb-2">
+            Customization
+          </h2>
+          <p class="text-gray-600">
+            Tailor Tailwind to your design system by customizing the config.
+          </p>
+          <button
+            class="mt-4 bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded transition-colors"
+          >
+            Learn More
+          </button>
+        </div>
+      </div>
+
+      <!-- Feature Section -->
+      <div class="mt-12 bg-white p-6 rounded-lg shadow-md">
+        <!-- Feature section with white background, padding, rounded corners, and shadow -->
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Key Features</h2>
+        <!-- Section title -->
+
+        <ul class="space-y-2">
+          <!-- List with vertical spacing between items -->
+          <li class="flex items-center">
+            <!-- Flex container for icon and text alignment -->
+            <span class="text-green-500 mr-2">✓</span>
+            <!-- Checkmark with right margin -->
+            <span>Responsive utility classes</span>
+            <!-- List item text -->
+          </li>
+          <li class="flex items-center">
+            <span class="text-green-500 mr-2">✓</span>
+            <span>Component extraction with @apply</span>
+          </li>
+          <li class="flex items-center">
+            <span class="text-green-500 mr-2">✓</span>
+            <span>Dark mode support</span>
+          </li>
+          <li class="flex items-center">
+            <span class="text-green-500 mr-2">✓</span>
+            <span>Custom plugin system</span>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-4 mt-12">
+      <!-- Footer with dark background, white text, padding, and top margin -->
+      <div class="container mx-auto text-center">
+        <!-- Centered text container -->
+        <p>Created while learning Tailwind CSS</p>
+        <!-- Footer text -->
+        <p class="mt-2 text-gray-400">© 2025 - Tailwind Practice</p>
+        <!-- Copyright text with top margin and lighter color -->
+      </div>
+    </footer>
+  </body>
+</html>

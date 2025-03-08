@@ -1,0 +1,13 @@
+# Ignore embedded Git repositories
+10\ React/01basicreact/
+10\ React/nextjs/
+6\ Git/
+
+# Ignore node_modules
+node_modules/
+
+# Ignore logs
+*.log
+
+# Ignore environment variables
+.env 

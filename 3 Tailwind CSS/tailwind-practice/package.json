@@ -1,0 +1,22 @@
+{
+  "name": "tailwind-practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js",
+    "watch": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "start": "node open-browser.js",
+    "form": "node open-browser.js form.html",
+    "dark": "node open-browser.js dark-mode.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.9"
+  }
+}

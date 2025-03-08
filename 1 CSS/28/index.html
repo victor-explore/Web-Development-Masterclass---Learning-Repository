@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Defines the character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Makes the webpage responsive on different devices -->
+    <title>Futuristic Shoe Product Card</title>
+    <!-- Title for the webpage -->
+    <style>
+      /* Global styles */
+      body {
+        font-family: "Segoe UI", Arial, sans-serif; /* Modern, readable font stack */
+        background-color: #1a1a1a; /* Dark background for better contrast */
+        margin: 0; /* Removes default margin */
+        padding: 20px; /* Adds space around the content */
+        color: #ffffff; /* White text color for readability on dark background */
+        line-height: 1.6; /* Improves text readability with better line spacing */
+        display: flex; /* Uses flexbox for centering the main container */
+        justify-content: center; /* Centers content horizontally */
+        align-items: center; /* Centers content vertically */
+        min-height: 100vh; /* Full viewport height */
+      }
+
+      /* Main product card container */
+      .product-card {
+        background-color: #000000; /* Black background for the card */
+        border-radius: 15px; /* Rounded corners for the card */
+        padding: 20px; /* Padding inside the card */
+        max-width: 300px; /* Maximum width of the card */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Shadow for depth effect */
+        display: flex; /* Uses flexbox for layout */
+        flex-direction: column; /* Stacks children vertically */
+        align-items: center; /* Centers children horizontally */
+        border: 1px solid #333; /* Subtle border around the card */
+      }
+
+      /* Product image container */
+      .product-image-container {
+        background-color: #ffffff; /* White background for the image area */
+        border-radius: 10px; /* Rounded corners for the image container */
+        width: 100%; /* Full width of the parent */
+        height: 200px; /* Fixed height for the image container */
+        display: flex; /* Uses flexbox for centering */
+        justify-content: center; /* Centers horizontally */
+        align-items: center; /* Centers vertically */
+        margin-bottom: 15px; /* Space below the image container */
+        padding: 10px; /* Padding inside the image container */
+      }
+
+      /* Product image styling */
+      .product-image {
+        max-width: 80%; /* Limits image width */
+        max-height: 80%; /* Limits image height */
+        object-fit: contain; /* Maintains aspect ratio */
+        filter: drop-shadow(
+          0 5px 10px rgba(0, 0, 0, 0.2)
+        ); /* Adds shadow to the image */
+      }
+
+      /* Product title styling */
+      .product-title {
+        color: #ffffff; /* White text for contrast */
+        font-size: 20px; /* Font size for the title */
+        font-weight: bold; /* Bold text for emphasis */
+        text-align: center; /* Centers the text */
+        margin: 10px 0 5px 0; /* Margin for spacing */
+        text-transform: uppercase; /* Converts text to uppercase */
+        letter-spacing: 1px; /* Increased letter spacing for style */
+      }
+
+      /* Coming soon tag styling */
+      .coming-soon {
+        color: #ffcc00; /* Yellow color for visibility */
+        font-size: 14px; /* Font size for the tag */
+        text-align: center; /* Centers the text */
+        margin-bottom: 15px; /* Space below the tag */
+        text-transform: uppercase; /* Converts text to uppercase */
+        letter-spacing: 1px; /* Increased letter spacing for style */
+      }
+
+      /* Button container styling */
+      .button-container {
+        display: flex; /* Uses flexbox for layout */
+        justify-content: space-between; /* Spaces buttons evenly */
+        width: 100%; /* Full width of the parent container */
+        margin-top: 10px; /* Space above the button container */
+        gap: 10px; /* Space between buttons */
+      }
+
+      /* Button styling */
+      .button {
+        flex: 1; /* Makes buttons take equal width */
+        padding: 10px 0; /* Padding for button height */
+        border-radius: 25px; /* Rounded corners for the buttons */
+        font-weight: bold; /* Bold text for better visibility */
+        text-align: center; /* Centers the text in the button */
+        text-transform: uppercase; /* Converts text to uppercase */
+        cursor: pointer; /* Changes cursor to pointer on hover */
+        transition: all 0.3s ease; /* Smooth transition for hover effects */
+        font-size: 14px; /* Font size for button text */
+        letter-spacing: 1px; /* Increased letter spacing for style */
+        color: white; /* White text for contrast */
+        border: 2px solid #3498db; /* Blue border for the buttons */
+      }
+
+      /* Buy now button styling */
+      .buy-button {
+        background-color: #1e1e1e; /* Dark background for buy button */
+      }
+
+      /* Add to cart button styling */
+      .cart-button {
+        background-color: #1e1e1e; /* Dark background for cart button */
+      }
+
+      /* Button hover effects */
+      .button:hover {
+        transform: translateY(-3px); /* Slight lift effect on hover */
+        box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4); /* Glowing effect with shadow */
+        background-color: #3498db; /* Blue background on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="product-card">
+      <!-- Product image container -->
+      <div class="product-image-container">
+        <img
+          src="shoe-image.jpg"
+          alt="Futuristic HC Shoe"
+          class="product-image"
+        />
+        <!-- Image of the futuristic shoe product -->
+      </div>
+
+      <!-- Product title -->
+      <h2 class="product-title">Futuristic HC Shoe</h2>
+      <!-- Title of the product -->
+
+      <!-- Coming soon tag -->
+      <div class="coming-soon">Coming Soon</div>
+      <!-- Indicates the product is not yet available -->
+
+      <!-- Button container -->
+      <div class="button-container">
+        <div class="button buy-button">Buy Now</div>
+        <!-- Button for immediate purchase -->
+
+        <div class="button cart-button">Add to Cart</div>
+        <!-- Button to add the product to shopping cart -->
+      </div>
+    </div>
+  </body>
+</html>

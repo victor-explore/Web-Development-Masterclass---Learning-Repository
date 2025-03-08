@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Manipulation Learning App</title>
+    <link rel="icon" href="data:," />
+    <style>
+      body {
+        background-color: #1e1e2e;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: #89b4fa;
+      }
+
+      .app-section {
+        background-color: #313244;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .playground {
+        background-color: #45475a;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        min-height: 200px;
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      button {
+        background-color: #cba6f7;
+        color: #1e1e2e;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #f5c2e7;
+        transform: translateY(-2px);
+      }
+
+      input,
+      select {
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #6c7086;
+        background-color: #313244;
+        color: #fff;
+      }
+
+      .element-box {
+        border: 2px solid #f9e2af;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 4px;
+        display: inline-block;
+      }
+
+      .code-display {
+        background-color: #11111b;
+        padding: 15px;
+        border-radius: 4px;
+        font-family: monospace;
+        margin-top: 10px;
+        white-space: pre-wrap;
+      }
+
+      .instructions {
+        background-color: #313244;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+
+      .instructions h2 {
+        color: #a6e3a1;
+        margin-top: 0;
+      }
+
+      .instructions ol {
+        line-height: 1.6;
+      }
+
+      .key {
+        background-color: #45475a;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: monospace;
+      }
+
+      .success-message {
+        color: #a6e3a1;
+        font-weight: bold;
+      }
+
+      .error-message {
+        color: #f38ba8;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>DOM Manipulation Learning App</h1>
+
+      <div class="app-section">
+        <h2>Interactive DOM Playground</h2>
+        <p>
+          Use the controls below to practice different DOM manipulation
+          techniques.
+        </p>
+
+        <div class="controls">
+          <button id="create-element">Create Element</button>
+          <button id="modify-element">Modify Element</button>
+          <button id="delete-element">Delete Element</button>
+          <button id="change-style">Change Style</button>
+          <button id="add-event">Add Event</button>
+          <button id="reset-playground">Reset Playground</button>
+        </div>
+
+        <div class="playground" id="playground">
+          <div class="element-box" id="box1">Element 1</div>
+          <div class="element-box" id="box2">Element 2</div>
+          <div class="element-box" id="box3">Element 3</div>
+        </div>
+
+        <div class="code-display" id="code-display">
+          // DOM manipulation code will appear here
+        </div>
+      </div>
+
+      <div class="instructions">
+        <h2>How to Use This App</h2>
+        <ol>
+          <li>
+            Click on the buttons above to perform different DOM operations
+          </li>
+          <li>Watch how elements in the playground change</li>
+          <li>See the actual JavaScript code in the code display area</li>
+          <li>
+            Open the console (<span class="key">F12</span> or
+            <span class="key">Ctrl+Shift+J</span>) to see additional information
+          </li>
+          <li>Try to understand how each operation affects the DOM</li>
+        </ol>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

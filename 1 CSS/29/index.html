@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Defines the character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Makes the webpage responsive on different devices -->
+    <title>Responsive Design Learning App</title>
+    <!-- Title for the webpage -->
+    <style>
+      /* Global styles */
+      body {
+        font-family: "Segoe UI", Arial, sans-serif; /* Modern, readable font stack */
+        margin: 0; /* Removes default margin */
+        padding: 0; /* Removes default padding */
+        color: #333; /* Default text color for readability */
+        line-height: 1.6; /* Improves text readability */
+      }
+
+      /* Header styling */
+      .page-header {
+        background-color: #2c3e50; /* Dark blue background */
+        color: white; /* White text for contrast */
+        text-align: center; /* Centers the header text */
+        padding: 20px; /* Padding around the content */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+      }
+
+      /* Main container */
+      .container {
+        max-width: 1200px; /* Maximum width for large screens */
+        margin: 0 auto; /* Centers the container */
+        padding: 20px; /* Padding inside the container */
+      }
+
+      /* Responsive examples section */
+      .examples-section {
+        margin-bottom: 30px; /* Space below the section */
+      }
+
+      /* Example box styling */
+      .example-box {
+        border: 2px solid #e9ecef; /* Light border */
+        border-radius: 8px; /* Rounded corners */
+        padding: 20px; /* Padding inside the box */
+        margin-bottom: 20px; /* Space between boxes */
+        transition: all 0.3s ease; /* Smooth transition for changes */
+      }
+
+      /* Info panel styling */
+      .info-panel {
+        background-color: #f8f9fa; /* Light background */
+        border-left: 4px solid #3498db; /* Blue accent border */
+        padding: 15px; /* Padding inside the panel */
+        margin-bottom: 20px; /* Space below the panel */
+        border-radius: 0 8px 8px 0; /* Rounded corners on the right side */
+      }
+
+      /* Responsive demonstration box */
+      .responsive-demo {
+        background-color: #e74c3c; /* Red background by default */
+        color: white; /* White text for contrast */
+        padding: 20px; /* Padding inside the box */
+        text-align: center; /* Centers the text */
+        border-radius: 8px; /* Rounded corners */
+        margin-bottom: 20px; /* Space below the box */
+        transition: background-color 0.5s ease; /* Smooth color transition */
+      }
+
+      /* Screen size indicator */
+      .screen-size-indicator {
+        font-weight: bold; /* Bold text */
+        font-size: 1.2rem; /* Larger font size */
+        margin-bottom: 10px; /* Space below the indicator */
+      }
+
+      /* Current width display */
+      #current-width {
+        font-size: 2rem; /* Large font size for visibility */
+        font-weight: bold; /* Bold text for emphasis */
+        color: #2c3e50; /* Dark blue color */
+      }
+
+      /* Grid example */
+      .grid-container {
+        display: grid; /* Uses grid layout */
+        grid-template-columns: repeat(4, 1fr); /* 4 equal columns by default */
+        gap: 15px; /* Space between grid items */
+        margin-bottom: 20px; /* Space below the grid */
+      }
+
+      .grid-item {
+        background-color: #3498db; /* Blue background */
+        color: white; /* White text for contrast */
+        padding: 20px; /* Padding inside the item */
+        text-align: center; /* Centers the text */
+        border-radius: 8px; /* Rounded corners */
+      }
+
+      /* Flexbox example */
+      .flex-container {
+        display: flex; /* Uses flexbox layout */
+        flex-wrap: wrap; /* Allows items to wrap */
+        gap: 15px; /* Space between flex items */
+        margin-bottom: 20px; /* Space below the container */
+      }
+
+      .flex-item {
+        background-color: #2ecc71; /* Green background */
+        color: white; /* White text for contrast */
+        padding: 20px; /* Padding inside the item */
+        text-align: center; /* Centers the text */
+        border-radius: 8px; /* Rounded corners */
+        flex: 1; /* Flex grow factor */
+        min-width: 200px; /* Minimum width before wrapping */
+      }
+
+      /* Media queries for responsive design */
+      @media (max-width: 1024px) {
+        .responsive-demo {
+          background-color: #3498db; /* Blue background for medium screens */
+        }
+
+        .grid-container {
+          grid-template-columns: repeat(
+            3,
+            1fr
+          ); /* 3 columns for medium screens */
+        }
+      }
+
+      @media (max-width: 768px) {
+        .responsive-demo {
+          background-color: #2ecc71; /* Green background for small screens */
+        }
+
+        .grid-container {
+          grid-template-columns: repeat(
+            2,
+            1fr
+          ); /* 2 columns for small screens */
+        }
+
+        .flex-item {
+          min-width: 150px; /* Smaller minimum width for small screens */
+        }
+      }
+
+      @media (max-width: 480px) {
+        .responsive-demo {
+          background-color: #9b59b6; /* Purple background for extra small screens */
+        }
+
+        .grid-container {
+          grid-template-columns: 1fr; /* 1 column for extra small screens */
+        }
+
+        .flex-item {
+          flex: 100%; /* Full width for extra small screens */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Page header -->
+    <header class="page-header">
+      <h1>Responsive Design Learning App</h1>
+      <!-- Main title -->
+      <p>Learn how websites adapt to different screen sizes</p>
+      <!-- Subtitle -->
+    </header>
+
+    <!-- Main content container -->
+    <div class="container">
+      <!-- Introduction section -->
+      <section class="examples-section">
+        <h2>What is Responsive Design?</h2>
+        <!-- Section title -->
+        <div class="info-panel">
+          <p>
+            Responsive design is an approach to web design that makes web pages
+            render well on a variety of devices and window or screen sizes. It
+            uses CSS techniques like media queries, flexible grids, and
+            responsive images to adapt to the viewing environment.
+          </p>
+          <!-- Explanation text -->
+        </div>
+      </section>
+
+      <!-- Current screen size display -->
+      <section class="examples-section">
+        <h2>Your Current Screen Size</h2>
+        <!-- Section title -->
+        <div class="example-box">
+          <div class="screen-size-indicator">
+            Width: <span id="current-width">0</span>px
+          </div>
+          <!-- Width display -->
+          <p>Resize your browser window to see how this value changes.</p>
+          <!-- Instruction text -->
+        </div>
+      </section>
+
+      <!-- Color changing demo -->
+      <section class="examples-section">
+        <h2>Responsive Color Change</h2>
+        <!-- Section title -->
+        <div class="responsive-demo">
+          <h3>This box changes color based on screen width</h3>
+          <!-- Demo title -->
+          <p>• Red: > 1024px (Large screens)</p>
+          <!-- Color explanation -->
+          <p>• Blue: 768px - 1024px (Medium screens)</p>
+          <!-- Color explanation -->
+          <p>• Green: 480px - 768px (Small screens)</p>
+          <!-- Color explanation -->
+          <p>• Purple: < 480px (Extra small screens)</p>
+          <!-- Color explanation -->
+        </div>
+      </section>
+
+      <!-- Grid layout example -->
+      <section class="examples-section">
+        <h2>Responsive Grid Layout</h2>
+        <!-- Section title -->
+        <div class="info-panel">
+          <p>
+            This grid changes from 4 columns to 3, then 2, then 1 column as the
+            screen gets smaller.
+          </p>
+          <!-- Explanation text -->
+        </div>
+        <div class="grid-container">
+          <div class="grid-item">Item 1</div>
+          <!-- Grid item -->
+          <div class="grid-item">Item 2</div>
+          <!-- Grid item -->
+          <div class="grid-item">Item 3</div>
+          <!-- Grid item -->
+          <div class="grid-item">Item 4</div>
+          <!-- Grid item -->
+          <div class="grid-item">Item 5</div>
+          <!-- Grid item -->
+          <div class="grid-item">Item 6</div>
+          <!-- Grid item -->
+          <div class="grid-item">Item 7</div>
+          <!-- Grid item -->
+          <div class="grid-item">Item 8</div>
+          <!-- Grid item -->
+        </div>
+      </section>
+
+      <!-- Flexbox example -->
+      <section class="examples-section">
+        <h2>Responsive Flexbox Layout</h2>
+        <!-- Section title -->
+        <div class="info-panel">
+          <p>
+            These flex items adjust their width and wrap to new lines as the
+            screen gets smaller.
+          </p>
+          <!-- Explanation text -->
+        </div>
+        <div class="flex-container">
+          <div class="flex-item">Flex Item 1</div>
+          <!-- Flex item -->
+          <div class="flex-item">Flex Item 2</div>
+          <!-- Flex item -->
+          <div class="flex-item">Flex Item 3</div>
+          <!-- Flex item -->
+          <div class="flex-item">Flex Item 4</div>
+          <!-- Flex item -->
+        </div>
+      </section>
+
+      <!-- Tips section -->
+      <section class="examples-section">
+        <h2>Responsive Design Tips</h2>
+        <!-- Section title -->
+        <div class="example-box">
+          <ul>
+            <li>Always use the viewport meta tag</li>
+            <!-- Tip item -->
+            <li>Use relative units (%, em, rem) instead of fixed units (px)</li>
+            <!-- Tip item -->
+            <li>Implement a mobile-first approach</li>
+            <!-- Tip item -->
+            <li>Test on multiple devices and screen sizes</li>
+            <!-- Tip item -->
+            <li>
+              Use media queries to adapt layouts for different screen sizes
+            </li>
+            <!-- Tip item -->
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- JavaScript for displaying current width -->
+    <script>
+      // Function to update the current width display
+      function updateWidth() {
+        document.getElementById("current-width").textContent =
+          window.innerWidth; // Updates the width display with the current window width
+      }
+
+      // Initial call to set the width
+      updateWidth(); // Sets the initial width value
+
+      // Add event listener to update width when window is resized
+      window.addEventListener("resize", updateWidth); // Updates the width display whenever the window is resized
+    </script>
+  </body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Defines the character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Sets the viewport for responsive design -->
+    <title>Tailwind CSS Dark Mode Example</title>
+    <!-- Sets the title of the webpage -->
+    <link href="../dist/output.css" rel="stylesheet" />
+    <!-- Links to the compiled CSS file -->
+    <style>
+      /* Simple dark mode implementation */
+      .dark {
+        background-color: #1a202c; /* Dark background */
+        color: #e2e8f0; /* Light text */
+      }
+
+      .dark .dark\:bg-gray-800 {
+        background-color: #2d3748; /* Dark gray background in dark mode */
+      }
+
+      .dark .dark\:bg-gray-900 {
+        background-color: #1a202c; /* Darker gray background in dark mode */
+      }
+
+      .dark .dark\:text-white {
+        color: #ffffff; /* White text in dark mode */
+      }
+
+      .dark .dark\:text-gray-300 {
+        color: #d1d5db; /* Light gray text in dark mode */
+      }
+
+      .dark .dark\:border-gray-700 {
+        border-color: #4a5568; /* Dark gray border in dark mode */
+      }
+    </style>
+  </head>
+  <body class="min-h-screen transition-colors duration-300">
+    <!-- Sets minimum height and transition effect -->
+
+    <!-- Header Section -->
+    <header class="bg-blue-600 text-white p-4 shadow-md">
+      <!-- Header with blue background, white text, padding, and shadow -->
+      <div class="container mx-auto flex justify-between items-center">
+        <!-- Container with flex display, space between, and centered items -->
+        <h1 class="text-3xl font-bold">Dark Mode Example</h1>
+        <!-- Large, bold title -->
+
+        <!-- Dark Mode Toggle -->
+        <button
+          id="darkModeToggle"
+          class="px-4 py-2 bg-white text-gray-800 rounded-lg shadow hover:bg-gray-100 transition-colors"
+          onclick="toggleDarkMode()"
+        >
+          Toggle Dark Mode
+          <!-- Button to toggle dark mode -->
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 mt-8">
+      <!-- Main content container with padding and top margin -->
+
+      <!-- Explanation Card -->
+      <div
+        class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8 transition-colors duration-300"
+      >
+        <!-- Card with background, rounded corners, shadow, padding, and transition -->
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+          About Dark Mode
+        </h2>
+        <!-- Card title with dark mode text color -->
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          Dark mode reduces eye strain in low-light conditions and can save
+          battery life on OLED displays. This example demonstrates a simple
+          implementation of dark mode using Tailwind CSS utility classes.
+        </p>
+        <!-- Paragraph with dark mode text color -->
+        <p class="text-gray-600 dark:text-gray-300">
+          Click the "Toggle Dark Mode" button in the header to switch between
+          light and dark modes.
+        </p>
+        <!-- Paragraph with dark mode text color -->
+      </div>
+
+      <!-- Feature Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Grid layout -->
+
+        <!-- Card 1 -->
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-colors duration-300"
+        >
+          <!-- Card with dark mode background and transition -->
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+            Automatic Dark Mode
+          </h3>
+          <!-- Card title with dark mode text color -->
+          <p class="text-gray-600 dark:text-gray-300">
+            Tailwind CSS supports automatic dark mode based on user's system
+            preferences using the 'prefers-color-scheme' media query.
+          </p>
+          <!-- Paragraph with dark mode text color -->
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-colors duration-300"
+        >
+          <!-- Card with dark mode background and transition -->
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+            Manual Toggle
+          </h3>
+          <!-- Card title with dark mode text color -->
+          <p class="text-gray-600 dark:text-gray-300">
+            You can also implement a manual toggle like this example, which adds
+            a 'dark' class to the HTML element.
+          </p>
+          <!-- Paragraph with dark mode text color -->
+        </div>
+      </div>
+
+      <!-- Code Example -->
+      <div
+        class="mt-8 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-colors duration-300"
+      >
+        <!-- Container with dark mode background and transition -->
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+          Code Example
+        </h2>
+        <!-- Section title with dark mode text color -->
+
+        <div
+          class="bg-gray-100 dark:bg-gray-900 p-4 rounded-lg border border-gray-200 dark:border-gray-700 overflow-x-auto"
+        >
+          <!-- Code block with dark mode styling -->
+          <pre
+            class="text-gray-800 dark:text-gray-300"
+          ><code>&lt;div class="bg-white dark:bg-gray-800 text-gray-800 dark:text-white"&gt;
+  This element has different styling in dark mode
+&lt;/div&gt;</code></pre>
+          <!-- Code with dark mode text color -->
+        </div>
+
+        <p class="mt-4 text-gray-600 dark:text-gray-300">
+          The
+          <code
+            class="bg-gray-100 dark:bg-gray-900 px-2 py-1 rounded text-gray-800 dark:text-gray-300"
+            >dark:</code
+          >
+          prefix applies styles only when dark mode is active.
+        </p>
+        <!-- Explanation with dark mode text color -->
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="mt-8 text-center">
+        <!-- Container with top margin and centered text -->
+        <a href="index.html" class="text-blue-600 hover:underline mr-4"
+          >Back to Home</a
+        >
+        <!-- Link with right margin -->
+        <a href="form.html" class="text-blue-600 hover:underline"
+          >Form Example</a
+        >
+        <!-- Link -->
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-4 mt-12">
+      <!-- Footer with dark background, white text, padding, and top margin -->
+      <div class="container mx-auto text-center">
+        <!-- Centered text container -->
+        <p>Created while learning Tailwind CSS</p>
+        <!-- Footer text -->
+        <p class="mt-2 text-gray-400">© 2025 - Tailwind Practice</p>
+        <!-- Copyright text with top margin and lighter color -->
+      </div>
+    </footer>
+
+    <!-- JavaScript for Dark Mode Toggle -->
+    <script>
+      // Function to toggle dark mode
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle("dark"); // Toggle the 'dark' class on the html element
+
+        // Update button text
+        const button = document.getElementById("darkModeToggle");
+        if (document.documentElement.classList.contains("dark")) {
+          button.textContent = "Toggle Light Mode";
+        } else {
+          button.textContent = "Toggle Dark Mode";
+        }
+      }
+    </script>
+  </body>
+</html>
